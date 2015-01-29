@@ -25,7 +25,7 @@ repository](https://github.com/cgroll/ijuliaNb) and can be viewed at
 ## Slides
 
 - [Julia language
-  benefits](http://cgroll.github.io/slides/julia_language_features.html) 
+  benefits](http://cgroll.github.io/slides/julia_features.slides.html) 
 - [Julia: iterators, comprehension and
   map](http://cgroll.github.io/slides/iterators_comprehensions_and_map.slides.html) 
 
