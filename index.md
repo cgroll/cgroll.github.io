@@ -18,9 +18,23 @@ My IJulia notebooks are collected in the [ijuliaNb
 repository](https://github.com/cgroll/ijuliaNb) and can be viewed at
 [nbviewer](http://nbviewer.ipython.org/github/cgroll/ijuliaNb/tree/master/).
 
-## My research notes
+## Software
 
-- [Copula theory](http://cgroll.github.io/copula_theory)
+Most of the financial econometrics software that I am contributing to
+can be found at [JuliaFinMetriX](http://juliafinmetrix.github.io/) 
+
+## My Docker images
+
+My current development environment as well as a stable version of my
+packages and notebooks can be accessed as virtual machine through
+[docker](https://registry.hub.docker.com/u/juliafinmetrix/jfinm_stable/).
+
+This allows interactive exploration of all JuliaFinMetriX notebooks
+with the simple command:
+
+````
+docker run -p 8888:8888 juliafinmetrix/jfinm_stable
+````
 
 ## Slides
 
@@ -29,8 +43,6 @@ repository](https://github.com/cgroll/ijuliaNb) and can be viewed at
 - [Julia: iterators, comprehension and
   map](http://cgroll.github.io/slides/iterators_comprehensions_and_map.slides.html) 
 
-## Software
+## My research notes
 
-Most of the financial econometrics software that I am contributing to
-can be found at [JuliaFinMetriX](http://juliafinmetrix.github.io/) 
-
+- [Copula theory](http://cgroll.github.io/copula_theory)
