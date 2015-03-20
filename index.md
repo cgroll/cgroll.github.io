@@ -46,3 +46,7 @@ docker run -p 8888:8888 juliafinmetrix/jfinm_stable
 ## My research notes
 
 - [Copula theory](http://cgroll.github.io/copula_theory)
+
+## My d3.js charts
+
+- [bl.ocks.org/cgroll](http://bl.ocks.org/cgroll)
