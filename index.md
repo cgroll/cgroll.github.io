@@ -23,6 +23,27 @@ repository](https://github.com/cgroll/ijuliaNb) and can be viewed at
 Most of the financial econometrics software that I am contributing to
 can be found at [JuliaFinMetriX](http://juliafinmetrix.github.io/) 
 
+## Slides
+
+General Julia slides:
+
+- [Julia language
+  benefits](http://cgroll.github.io/ijuliaSlides/julia_features.slides.html) 
+- [Julia: iterators, comprehension and
+  map](http://cgroll.github.io/ijuliaSlides/iterators_comprehensions_and_map.slides.html) 
+
+Research tools:
+
+- [git and github](http://cgroll.github.io/research_tools/output/git.slides.html)
+
+Teaching: 
+
+- [Risk Management: Introductory slides](http://cgroll.github.io/riskMan/output/intro.slides.html#/)
+
+## My research notes
+
+- [Copula theory](http://cgroll.github.io/copula_theory)
+
 ## My Docker images
 
 My current development environment as well as a stable version of my
@@ -35,25 +56,6 @@ with the simple command:
 ````
 docker run -p 8888:8888 juliafinmetrix/jfinm_stable
 ````
-
-## Slides
-
-General Julia slides:
-- [Julia language
-  benefits](http://cgroll.github.io/ijuliaSlides/julia_features.slides.html) 
-- [Julia: iterators, comprehension and
-  map](http://cgroll.github.io/ijuliaSlides/iterators_comprehensions_and_map.slides.html) 
-
-Research tools:
-- [git and github](http://cgroll.github.io/research_tools/output/git.slides.html)
-
-Teaching: risk management
-- [Introductory slides](http://cgroll.github.io/riskMan/output/intro.slides.html#/)
-
-
-## My research notes
-
-- [Copula theory](http://cgroll.github.io/copula_theory)
 
 ## My d3.js charts
 
