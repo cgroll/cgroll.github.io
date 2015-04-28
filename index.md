@@ -35,6 +35,7 @@ General Julia slides:
 Research tools:
 
 - [git and github](http://cgroll.github.io/research_tools/output/git.slides.html)
+- [pandoc and make](http://cgroll.github.io/research_tools/output/markdown.slides.html)
 
 Teaching: 
 
