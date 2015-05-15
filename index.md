@@ -31,6 +31,7 @@ General Julia slides:
   benefits](http://cgroll.github.io/ijuliaSlides/julia_features.slides.html) 
 - [Julia: iterators, comprehension and
   map](http://cgroll.github.io/ijuliaSlides/iterators_comprehensions_and_map.slides.html) 
+- [Julia: Market risk - univariate loss distribution](http://cgroll.github.io/ijuliaSlides/market_risk_univariate.slides.html) 
 
 Research tools:
 
@@ -40,6 +41,7 @@ Research tools:
 Teaching: 
 
 - [Risk Management: Introductory slides](http://cgroll.github.io/riskMan/output/intro.slides.html#/)
+- [Risk Management: VaR and ES slides](http://cgroll.github.io/riskMan/output/var_es.slides.html#/)
 
 ## My research notes
 
