@@ -42,6 +42,7 @@ Teaching:
 
 - [Risk Management: Introductory slides](http://cgroll.github.io/riskMan/output/intro.slides.html#/)
 - [Risk Management: VaR and ES slides](http://cgroll.github.io/riskMan/output/var_es.slides.html#/)
+- [Risk Management: Functions of random variables slides](http://cgroll.github.io/riskMan/output/func_rand_var.slides.html#/)
 
 ## My research notes
 
