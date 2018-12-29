@@ -1,3 +1,11 @@
+{% if page.math != false %}
+  {% include mathjax.html %}
+{% endif %}
+
+{% if page.jupyter != false %}
+  {% include jupyter_styling.html %}
+{% endif %}
+
 <header class="site-header">
 
   <div class="wrapper">
