@@ -1,14 +1,14 @@
-title: Your awesome title
-author: GitHub User
-email: your-email@domain.com
+title: Quant Perspective
+author: Dr. Christian Groll
+position: Head of Quantitative Investment Strategy
+company: Scalable Capital
 description: > # this means to ignore newlines until "twitter_username:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  A blog about quantitative finance,
+  data and tools.
 
 # social links
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: ChrisAndData
+# github_username:  cgroll
 rss: rss
 # dribbble_username: jekyll
 # facebook_username: jekyll
@@ -31,17 +31,23 @@ rss: rss
 #   instance: example.com
 
 
-show_excerpts: false # set to true to show excerpts on the homepage
+show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 minima:
   date_format: "%b %-d, %Y"
 
+permalink: /:categories/:title/
+
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
-#header_pages:
-# - about.md
+header_pages:
+- about.md
+- categories.html
+- links.md
+- todos.md
+
 
 # Build settings
 theme: minima
