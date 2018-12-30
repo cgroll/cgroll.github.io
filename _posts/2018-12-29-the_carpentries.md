@@ -5,8 +5,8 @@ date:   2018-12-29
 categories: [Tools, HowTo]
 excerpt: > #
   Get your coding and data science skills pumped up with workshops and
-  publicly available lesson material of "The Carpentries". Amongst
-  others, learn how to use the Unix Shell, Git, scientific computing
+  publicly available lesson material of the Carpentries. Amongst
+  others, learn how to use Unix Shell, Git, scientific computing
   languages (Python, R, Matlab), SQL, Make and Webscraping.
 math: false
 ---
