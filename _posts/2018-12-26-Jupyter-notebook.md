@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Try Jupyter notebook post"
+title:  "Jupyter notebook post should come here"
 date:   2018-12-26
-categories: [FinMetrics, Tools]
+categories: [FinMetrics]
 jupyter: true
 math: true
 excerpt: > #
