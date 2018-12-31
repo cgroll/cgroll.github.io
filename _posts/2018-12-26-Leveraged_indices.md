@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Leveraged indices and the volatility drag"
-date:   2018-12-26
+date:   2018-12-28
 categories: [FinMetrics]
 jupyter: true
 math: true

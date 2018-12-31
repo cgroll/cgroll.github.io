@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Atlas of Sustainable Development Goals 2018"
-date:   2018-12-29
+date:   2018-12-31
 categories: [Economics, Commentary]
 excerpt: > #
   The Atlas of Sustainable Development Goals is a collection of
