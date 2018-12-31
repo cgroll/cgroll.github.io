@@ -4,7 +4,10 @@ title:  "Atlas of Sustainable Development Goals 2018"
 date:   2018-12-29
 categories: [Economics, Commentary]
 excerpt: > #
-  Global statistics and visualizations of the World Bank Group.
+  The Atlas of Sustainable Development Goals is a collection of
+  socio-economic statistics and visualizations that measure the 
+  progress achieved towards the Sustainable Development Goals that are
+  targeted by 2030.
 math: false
 ---
 

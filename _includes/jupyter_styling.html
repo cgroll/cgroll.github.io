@@ -10626,7 +10626,9 @@ div.input {
   }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
+/* input prompt was manually adapted to not show in[] */
 div.input_prompt {
+  display: none;
   color: #303F9F;
   border-top: 1px solid transparent;
 }
@@ -10911,8 +10913,10 @@ div.out_prompt_overlay:hover {
   box-shadow: inset 0 0 1px #000;
   background: rgba(240, 240, 240, 0.5);
 }
+/* The output prompt was manually adapted */
 div.output_prompt {
-  color: #D84315;
+	display: none;
+	color: #D84315;
 }
 /* This class is the outer container of all output sections. */
 div.output_area {
@@ -11002,17 +11006,18 @@ div.output_area pre {
   border-radius: 0;
 }
 /* This class is for the output subarea inside the output_area and after
-   the prompt div. */
+the prompt div. */
+/* subarea was manually adapted */
 div.output_subarea {
   overflow-x: auto;
-  padding: 0.4em;
+  padding: 0.0em;
   /* Old browsers */
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-  max-width: calc(100% - 14ex);
+  max-width: calc(100% - 0.0ex);
 }
 div.output_scroll div.output_subarea {
   overflow-x: visible;
@@ -13056,6 +13061,12 @@ body {
   padding: 8px;
 }
 
+div.hideable .hidden {
+	  display: none !important;
+	}
+}
+
+
 div#notebook {
   overflow: visible;
   border-top: none;
@@ -13071,6 +13082,9 @@ div#notebook {
   div.output { 
     display: block;
     page-break-inside: avoid; 
-  }
+	}
+
 }
 </style>
+
+

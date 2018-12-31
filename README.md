@@ -36,3 +36,23 @@ jupyter nbconvert --to html --template basic
 - site statistics (Google Analytics)
 - add citations
 - extend icons for easy sharing (LinkedIn)
+
+# Further topics
+
+- leveraged ETFs: synthetic creation, simulating payoffs
+- time series momentum:
+	- single time series strategy
+	- multiple assets strategy
+- Markowitz deficiencies
+- diversification-aware frontier
+- synthetic time series:
+	- hedged time series
+	- bond index prices
+- financial market empiricism: return triangle, maximum drawdowns
+- risk measures: max drawdown, dorfleitner
+- benefits of diversification
+- index tracking
+- tracking error
+- factor indices
+- active vs passive (risk-adjusted returns)
+- fallacies of time-varying dependence measures
