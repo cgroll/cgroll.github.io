@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "BlackRock Advantage Series"
-date:   2018-12-29
+date:   2019-03-04
 categories: [Finance, Commentary]
 excerpt: > #
   The Advantage Series is combining technology, big data analysis and
