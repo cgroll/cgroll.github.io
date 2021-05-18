@@ -9,4 +9,4 @@ excerpt: > #
 math: false
 ---
 
-{% notebook notebooks/01_Landsat_8_visualizations.ipynb %}
+{% include notebooks/01_Landsat_8_visualizations.html %}
