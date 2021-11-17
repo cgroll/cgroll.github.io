@@ -10,3 +10,5 @@ math: false
 ---
 
 {% include notebooks/01_Landsat_8_visualizations.html %}
+
+The source of the notebook can be found [here](https://github.com/cgroll/earth-gis/blob/main/notebooks/tutorials/01_Landsat_8_visualizations.ipynb)
