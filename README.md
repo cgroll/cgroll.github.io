@@ -30,6 +30,15 @@ jupyter nbconvert --to html --template basic
 {% include notebooks/tut_german_interest_rates_and_bond_indices.html %}
 ```
 
+### Adding Jupyter notebooks with leaflet maps
+
+Currently leaflet maps are not displayed on github pages when the notebook is just rendered with the latest package versions. In order to fix this, the leaflet maps need to be rendered with a particular package version for "branca": 0.3.1 (see earth-gis repo). Hence:
+
+- set branca to the correct version in the virtual environment of the notebook project
+- render the notebook with the correct branca version activated
+- convert the notebook to html
+- add the html file to the github pages repo
+
 # TODOs
 
 - include sitemap to make page searchable
