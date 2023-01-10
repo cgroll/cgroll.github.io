@@ -1,45 +1,13 @@
 title: Quantitative Thinking
 author: Dr. Christian Groll
+email: groll.christian.edu@gmail.com
 position: Head of Quantitative Investment Strategy
 company: Scalable Capital
 description: > # this means to ignore newlines until "twitter_username:"
   A blog about quantitative finance,
   data and tools.
 
-# social links
-twitter_username: ChrisAndData
-# github_username:  cgroll
-rss: rss
-# dribbble_username: jekyll
-# facebook_username: jekyll
-# flickr_username: jekyll
-# instagram_username: jekyll
-# linkedin_username: jekyll
-# pinterest_username: jekyll
-# youtube_username: jekyll
-# youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
-# youtube_channel_name: CloudCannon
-# telegram_username: jekyll
-# googleplus_username: +jekyll
-# microdotblog_username: jekyll
 google_analytics: G-BZN8CJ6C41
-
-# Mastodon instances
-# mastodon:
-# - username: jekyll
-#   instance: example.com
-# - username: jekyll2
-#   instance: example.com
-
-
-show_excerpts: true # set to true to show excerpts on the homepage
-
-# Minima date format
-# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
-minima:
-  date_format: "%b %-d, %Y"
-
-permalink: /:year/:month/:title/
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
@@ -49,10 +17,21 @@ header_pages:
 - links.md
 - todos.md
 
+permalink: /:year/:month/:title/
+
+minima:
+  date_format: "%b %-d, %Y"
+  social_links:
+    - { platform: twitter,        user_url: "https://twitter.com/ChrisAndData" }
+    - { platform: linkedin,       user_url: "https://www.linkedin.com/in/christian-groll-a4a804144/" }
+    - { platform: github,         user_url: "https://github.com/cgroll" }			 
+    - { platform: youtube,        user_url: "https://www.youtube.com/@christiangroll7363" }
+
+show_excerpts: true # set to true to show excerpts on the homepage
 
 # Build settings
-theme: minima
-
+remote_theme: jekyll/minima
 plugins:
- - jekyll-feed
- - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-seo-tag
