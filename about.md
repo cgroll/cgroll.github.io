@@ -6,8 +6,7 @@ permalink: /about/
 
 Hi, I'm Chris. Welcome to my blog.
 
-
-### About Quant Perspective
+### About Quantitative Thinking
 
 We all know the famous saying: "Through experience we learn". In my
 view, rigorous quantitative thinking is just a way to exploit this to
@@ -27,7 +26,7 @@ the way of objective evaluations and hence inhibit optimal decision
 making. Using a rigorous quantitative modeling approach reduces these
 deficiencies and puts decision making into a testable and verifiable
 framework - a prerequisite to evaluate success. With the right tools,
-data can reveals insights that go far beyond the history and
+data can reveal insights that go far beyond the history and
 experiences of any single person.
 
 <br>
@@ -63,25 +62,30 @@ quantitative approach:
 My enthusiasm for statistical modeling goes back many years. I
 graduated in financial mathematics before I became a research
 assistant at the statistics department of Ludwig-Maximilians
-University (LMU). During that time I was involved in several research
-projects, for instance modeling of market risk, fixed-income
-securities, options, commodities, variable annuities and failure rates
-of wind parks. Primarily, however, I did engage in "Dynamic Risk
-Management of Multi-asset Portfolios", the topic of my doctoral thesis
-which I wrote at the chair of financial econometrics.
+University (LMU). During that time I wrote my doctoral thesis at the
+chair of financial econometrics on "Dynamic Risk Management of
+Multi-asset Portfolios".
 
 <br>
 
-My goal has always been to achieve a holistic view on financial
-markets, and to build a strong understanding about statistical
+I'm generally interested in a broad spectrum of socioeconomic topics,
+for example:
+
+- Earth observation, GIS
+- Smart city planning
+- Economics, Finance
+- Crypto
+
+<br>
+
+My goal has always been to achieve a holistic view on socioeconomic
+phenomena, and to build a strong understanding about statistical
 methodologies. I am convinced that the best way of getting there is
-through active engagement with real world data, using state of the art
-software tools.
+through active engagement with real world data, using statistical / AI
+modeling and state of the art software tools. In addition, I also like
+data visualizations and 3D modeling with Blender 3d. You know, to make
+sure to live up to the claim that "information is beautiful" ;-)
 
 <br>
 
-This is what I am passionate about, and also what I am working on. At
-Scalable Capital I am Head of Quantitative Investment Strategy and
-part of a team that develops algorithms that automatically monitor and
-actively re-balance client portfolios with regards to aspects of risk.
-
+If you want to get more details about me, here is my [CV](/assets/CV_public.pdf).
