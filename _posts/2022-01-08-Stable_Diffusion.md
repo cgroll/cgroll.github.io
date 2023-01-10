@@ -2,7 +2,7 @@
 layout: post
 title:  "Stable Diffusion"
 date:   2022-01-08
-categories: [Tools, HowTo]
+categories: [AI]
 excerpt: > #
   Get your coding and data science skills pumped up with workshops and
   publicly available lesson material of the Carpentries. Amongst
@@ -13,7 +13,7 @@ math: false
 
 I finally managed to play around with text-to-image AI models. I used Stable Diffusion. Installed it locally in order to benefit from my GPU setup. But you actually can play around with it pretty nicely in your browser as well. Here are the most important HuggingFace spaces for this:
 
-### Image from text
+#### Image from text
 
 HuggingFace space: [stabilityai/stable-diffusion-1](https://huggingface.co/spaces/stabilityai/stable-diffusion-1)
 
@@ -65,7 +65,7 @@ It created some pretty impressive mad scientist images:
 
 <br>
 
-### Image from text, including negative prompt
+#### Image from text, including negative prompt
 
 HuggingFace space: [stabilityai/stable-diffusion](https://huggingface.co/spaces/stabilityai/stable-diffusion)
 
@@ -80,7 +80,7 @@ Here you can additionally specify things that should not be displayed. For examp
 <br>
 
 
-### Image inpainting
+#### Image inpainting
 
 HuggingFace space: [multimodalart/stable-diffusion-inpainting](https://huggingface.co/spaces/multimodalart/stable-diffusion-inpainting)
 
@@ -89,7 +89,7 @@ HuggingFace space: [multimodalart/stable-diffusion-inpainting](https://huggingfa
 </p>
 
 
-### Own experiment
+#### Application
 
 <p align="center">
   <img src="/assets/images/stable_diffusion_giraffe_elephant.png" alt="Elephant with giraffe spot pattern" width="500"/>
