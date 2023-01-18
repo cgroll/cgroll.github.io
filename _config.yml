@@ -14,7 +14,7 @@ header_pages:
 - about.md
 - categories.html
 - links.md
-- todos.md
+- tools.md
 
 permalink: /:year/:month/:title/
 
