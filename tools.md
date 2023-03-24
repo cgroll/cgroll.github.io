@@ -4,23 +4,21 @@ title: Tools
 permalink: /tools/
 ---
 
-"A tool is but the extension of a man's hand, and a machine is but a
-complex tool. He that invents a machine augments the power of a man
-and the well-being of mankind." - Henry Ward Beecher
+"Give me six hours to chop down a tree and I will spend the first four
+sharpening the axe." - Abraham Lincoln
 
 <br>
 
-Tools, machines, services: there are some many things out there that
+Tools, machines, services: there are many things out there that
 have the potential to make our lives easier and happier. But finding
 the best tools among the millions of options can be a difficult and
 time-consuming process in itself. Hence, I personally find it pretty
 useful to hear about the tools and services that other successful
-people use. Similarly, I thought it might be helpful for some people
-to share my experiences as well, even though I'm not successful ;-)
+people use. Similarly, I thought it might be helpful for some people if I share my experiences as well, even though I'm only moderately successful ;-)
 
 <br>
 
-## "Second brain" tools
+# "Second brain" and organization tools
 
 With increasing age and decreasing brain capacity processing the
 constant stream of information that we encounter on a daily basis is
@@ -42,7 +40,7 @@ effective tool for staying organized and on top of tasks and projects.
 ### Instapaper
 
 [Instapaper](https://www.instapaper.com) is a tool for saving and organizing web pages to a personal
-library for later viewing, reading or studying. It minimize
+library for later viewing, reading or studying. It minimizes
 distractions while reading by providing a customized appearance
 adjusting the font size, line spacing, and background color.
 Additionally, it has a feature called "highlight and notes" that
@@ -54,7 +52,7 @@ Readwise).
 
 [Readwise](https://readwise.io/) is a tool that helps users to review and retain the
 information they've read. It works by integrating with popular reading
-apps like Kindle, Instapaper, and Pocket, and automatically extracting
+apps like Kindle, Instapaper, and Pocket, and automatically extracts
 highlights, notes and annotations that users have made in those apps.
 It then presents those notes in a daily email digest, and allows users
 to review the information at a scheduled time. By doing so, it helps
@@ -72,66 +70,189 @@ Calendar are perfect and lightweight tools for note-taking and
 scheduling appointments and reminders, in particular whenever I'm on
 the go.
 
-## Computer
+# Computer
 
-I like being flexible, that's why I only work on a laptop: my Lenovo Legion 5 with AMD Ryzen 7 6800H processor.
-
-Most important:
-- 15,6" high-resolution display
-- GeForce RTX 3070
-
-Good price-quality ratio. But only 16GB RAM and only 1TB disk space.
+As someone who values flexibility, I prefer to work solely on my
+laptop without the need for additional screens. This allows me to work
+from anywhere with ease. Currently, I use a Lenovo Legion 5 with an
+AMD Ryzen 7 6800H processor. The laptop has a large 15.6'' display
+with high-resolution, providing me with ample workspace and overview
+during coding. Additionally, the laptop boasts a GeForce RTX 3070 GPU,
+which I can utilize for computationally intensive tasks such as
+machine learning models or 3D graphics rendering. Overall, my setup
+allows me to work efficiently and effectively, no matter where I am
+for a good price to quality ratio. The only downside is that the
+computer only has 16GB RAM and a rather small disk size of 1TB.
 
 ### Operation system
 
-I actually prefer [Ubuntu](https://ubuntu.com/desktop). But graphics card does not work. So I need [Microsoft Windows](https://www.microsoft.com/en-us/windows?r=1) as well.
+Over the years I have found [Ubuntu](https://ubuntu.com/desktop) to be
+my favorite operating system. While [Microsoft
+Windows](https://www.microsoft.com/en-us/windows?r=1) and its
+mouse-click GUI may be the easiest way to get started with computers,
+the Linux command line offers a much more efficient way of speeding up
+workflows with bash commands and allowing for automation. One of the
+major advantages of Ubuntu is that it is free to use, which is why I
+have used it in the past when teaching a statistics course in Africa,
+where I wanted to ensure all students had access to a free and
+reproducible setup. In addition to its cost-effectiveness, Ubuntu also
+feels more lightweight than Windows to me. It does not require as many
+anti-virus checks and time-consuming updates, making it a more
+streamlined and efficient choice for my workflow.
 
-Ubuntu, Windows
+<br>
+
+While Ubuntu is my preferred operating system, I do occasionally use
+Windows as well. After all, it is still the standard operating system
+used by the majority of computer users. When I want to share
+something, it's important to consider the OS used by the people I'm
+sharing with (which is most likely Windows). Using the same OS as the
+recipient can make the process much smoother. Furthermore, there are
+certain programs or drivers that only run on Windows or Mac, so it's
+necessary to use those operating systems in those specific cases. For
+example, the GPU on my laptop only runs correctly on Windows. In these
+situations, I find it necessary to switch to Windows myself to ensure
+compatibility and optimal performance. While Ubuntu is my go-to
+operating system, it's important to choose the right tool for the job
+and sometimes that means using Windows or macOS instead of Ubuntu.
+
 
 ### Password management
 
-[KeepassX](https://www.keepassx.org/)
+[KeepassX](https://www.keepassx.org/) is a free and open-source
+password management software that helps users to securely store and
+manage their passwords in an encrypted database. It is a
+cross-platform application that runs on various operating systems,
+including Windows, Linux, and macOS. Using a password manager can
+encourage you to use better password practices, such as creating
+strong and unique passwords and changing them regularly. Since
+passwords are stored in an encrypted database, this means that even if
+your computer is hacked or stolen, your passwords cannot be accessed
+without the master password.
+
 
 ### Stay sync'ed / back'ed up
 
-[Dropbox](https://www.dropbox.com)
+[Dropbox](https://www.dropbox.com) is a cloud-based file hosting
+service that allows users to store and share files and folders across
+multiple devices and with other users. It works by creating a virtual
+folder on a user's computer or mobile device. Any file or folder
+placed in this folder is automatically uploaded to Dropbox's servers
+and synced across all of the user's devices that have Dropbox
+installed. This means that users can access their files from anywhere
+with an internet connection, whether it's on their computer,
+smartphone, or tablet.
+
+<br>
+
+I use Dropbox for several reasons, including syncing my password
+database across devices. For example, this allows me to access my
+credit card credentials on my mobile phone when I'm on vacation or
+away from my computer. Since KeepassX stores any passwords in an
+encrypted database, I do not need to worry about data privacy concerns
+in the Dropbox cloud. In addition to password syncing, I also use
+Dropbox to sync any e-books or PDF articles across devices. This is
+particularly useful when I want to read them on my tablet, which has a
+bigger screen size and a pen for highlighting. Another key benefit of
+using Dropbox is that files or documents are automatically back'ed up
+to the server, so you don't have to worry about losses of data when my
+device gets stolen or damaged. However, you should think about data
+privacy issues before you put all of your data into the cloud.
+
+# Software development
+
+### IDE / editor:
+
+Over the years I've tried couple of IDE's and text editors for
+software development, note taking, markdown or LaTeX documents. My
+current favorite is [Visual Studio
+Code](https://code.visualstudio.com/), a highly customizable and
+lightweight IDE that is available for Windows, macOS, and Linux
+operating systems. It supports a wide range of extensions that can be
+installed to enhance its functionality. And it allows customization of
+the editor with themes, keyboard shortcuts, and other preferences.
+This is a necessary feature for people like me that once climbed the
+steep learning curve and used [GNU
+Emacs](https://www.gnu.org/software/emacs/) and Emacs shortcuts for
+multiple years.
+
+<br>
+
+Emacs has a very keyboard-centric interface: it is designed to be used
+primarily with the keyboard, which makes it possible to perform many
+operations quickly and efficiently. It is also highly customizable and
+allows a wide range of text editing capabilities, including syntax
+highlighting, auto-completion, search and replace, and recording of
+macros. I actually still use it for quick ntoes, text editing and git
+commands through magit.
 
 
-## Software development
+### Software languages
 
-IDE / editor:
+At the moment I do most of my coding in
+[Python](https://www.python.org/), mostly because I think it has the
+best ecosystem for my usecases right now. It comes with great packages
+for ML, AI and data science applications. But it also has a great set
+of general purpose tools for requirements like unit testing, database
+connections, sending / receiving requests, SDKs for cloud providers
+and many more. Also, it is generally well supported by third party
+services or frameworks, e.g. AWS lambda functions, Google Earth
+Engine, Blender 3D and many more.
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [GNU Emacs](https://www.gnu.org/software/emacs/)
+Before Python did some for fun coding in
+[Julia](https://julialang.org/). I still think that Julia has great
+potential because it was designed from the beginning for high
+performance. It also comes with a lot of other state of the art syntax
+goodies like multiple dispatch, metaprogramming capabilities, abstract
+types, multi-threading and many more. I will definitely keep an eye on
+Julia, its growing ecosystem and adoption in the industry.
 
-Software languages:
-- Python
-- Julia, R, Matlab
 
-Organizing code:
 
-- meld
-- git, magit, github for desktop, git bash, myrepos, git-lfs
-- DVC
+[R](https://www.r-project.org/) with tidyverse 
 
-Re-triggering applications:
+
+[Matlab](https://www.mathworks.com/products/matlab.html) - can be a
+good starting language for beginners: great IDE, debugging
+capabilities. But I outgrew rather soon. Licenses costly, hard to
+embed in a broader production environment, limited in capabilities for
+certain usecases.
+
+### Organizing code
+
+[Meld](https://gitlab.gnome.org/GNOME/meld) is a visual diff and merge
+tool to compare files or directories. It is an open-source software
+that runs on Windows, macOS, and Linux operating systems. It provides
+users with a graphical user interface that displays the differences
+between two or three files side-by-side. This makes it easy to
+identify and merge changes made to the code or other text-based files.
+
+[git](https://git-scm.com/)
+- magit, github for desktop, git bash, myrepos, git-lfs
+
+- [DVC](https://dvc.org/) - data version control
+
+### Re-triggering applications
+
+DAGs: directed acyclic graphs
+steps of computation
 
 - GNU make
 - airflow
 
-recordmydesktop
+## MISC
 
-Blender 3d
+- docker
+- recordmydesktop
+- OBS Studio
+- Blender 3d
 
-pocketcast: podcasts. Transcription algo
-
-
-digikam
+- pocketcast: podcasts. Transcription algo
+- digikam
 
 ## Subscriptions:
 
-Spotify
-SaaS Scalable: broker, wealth management
-
-Alexa
-AWS
+- Spotify
+- SaaS Scalable: broker, wealth management
+- AWS database
+- Alexa
