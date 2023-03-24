@@ -187,7 +187,9 @@ macros. I actually still use it for quick ntoes, text editing and git
 commands through magit.
 
 
-### Software languages
+## Software languages
+
+### Python
 
 At the moment I do most of my coding in
 [Python](https://www.python.org/), mostly because I think it has the
@@ -199,6 +201,8 @@ and many more. Also, it is generally well supported by third party
 services or frameworks, e.g. AWS lambda functions, Google Earth
 Engine, Blender 3D and many more.
 
+### Julia
+
 Before Python did some for fun coding in
 [Julia](https://julialang.org/). I still think that Julia has great
 potential because it was designed from the beginning for high
@@ -208,17 +212,27 @@ types, multi-threading and many more. I will definitely keep an eye on
 Julia, its growing ecosystem and adoption in the industry.
 
 
+### R
 
-[R](https://www.r-project.org/) with tidyverse 
+[R](https://www.r-project.org/) with tidyverse
+TODO
 
+### Matlab
 
-[Matlab](https://www.mathworks.com/products/matlab.html) - can be a
-good starting language for beginners: great IDE, debugging
-capabilities. But I outgrew rather soon. Licenses costly, hard to
-embed in a broader production environment, limited in capabilities for
-certain usecases.
+[Matlab](https://www.mathworks.com/products/matlab.html) was the
+language that I used for my first data application (Diploma Thesis),
+but also was the first language that I used in a production setup. I
+still think that it can be a good starting point for beginners: it
+comes with a good IDE and a great built-in debugger. However, due to
+its proprietary nature Matlab comes with licensing costs and it also
+is rather hard to embed into a broader software infrastructure. It
+also is rather limited in capabilities for certain usecases, e.g. data
+science and AI applications. Most state of the art research packages
+are published in open source software languages.
 
-### Organizing code
+## Organizing code
+
+### Meld
 
 [Meld](https://gitlab.gnome.org/GNOME/meld) is a visual diff and merge
 tool to compare files or directories. It is an open-source software
@@ -227,10 +241,65 @@ users with a graphical user interface that displays the differences
 between two or three files side-by-side. This makes it easy to
 identify and merge changes made to the code or other text-based files.
 
-[git](https://git-scm.com/)
-- magit, github for desktop, git bash, myrepos, git-lfs
+### Git
 
-- [DVC](https://dvc.org/) - data version control
+[git](https://git-scm.com/) certainly was a game changer for me when I
+started using it probably a decade ago. I started using it when I had
+to sync code between multiple machines (work desktop, laptop at home),
+but I soon noticed that it generally forces you to set up a cleaner
+folder structure and file history. No more file_v1, file_v2,
+file_final labelling required ;-) And of course it reaches its full
+potential only when you are working collaboratively with multiple
+persons on some project.
+
+### Magit
+
+There are several extensions to git that I use.
+[magit](https://magit.vc/) is my favorite entrypoint to quickly apply
+git commands with a lot of convenient keyboard shortcuts. But it
+requires Emacs, and hence it usually is not the best choice for a
+broader audience. But it showed me how much better your git experience
+can become when you use some kind of GUI or helpful entrypoint for
+git.
+
+### Github desktop, git bash
+
+Whenever I'm working on Windows, I tend to use [Github
+Desktop](https://desktop.github.com/) or git bash for more complicated
+commands than simple merges and commits.
+
+### MyRepos
+
+I also use [myrepos](https://github.com/RichiH/myrepos) from time to
+time when I'm either involved into too many projects and repositories
+simultaneously, or when I want to generally make sure that all my
+relevant local repositories are up to date.
+
+### git-lfs
+
+For binary and / or large files I mostly use
+[git-lfs](https://git-lfs.com/). Although I ran into some
+synchronization issues from time to time in projects with multiple
+collaborators and files under git-lfs control. So I'm actually still
+searching for a better alternative here.
+
+### DVC
+
+One such alternative could be [DVC](https://dvc.org/): data version
+control. It has a slightly different way of dealing with large files,
+so it is not a perfect substitute. But it is still a great way to keep
+track of binary files and / or large files and it actually has an even
+much broader scope. I allows to keep track of which data inputs and
+model outputs are associated with each other, so that e.g. in AI
+applications you don't lose track of which inputs where used for which
+model. But it also allows easy sharing of files amongst multiple
+project members so that a computationally intensive scripts does not
+need to be run multiple times. And if you want, you can also use DVC
+to keep track of the sequence of steps and scripts that have to be run
+in order to replicate the current project state.
+
+<br>
+
 
 ### Re-triggering applications
 
