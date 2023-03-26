@@ -8,4 +8,4 @@ excerpt: > #
 math: false
 ---
 
-Hoping that it might help other people discovering something useful that they did not know yet, I created a list of my favorite tools and services [here](https://www.quantitative-thinking.com/tools/).
+Hoping that it might help other people discover something useful that they did not know yet, I created a list of my favorite tools and services [here](https://www.quantitative-thinking.com/tools/).
