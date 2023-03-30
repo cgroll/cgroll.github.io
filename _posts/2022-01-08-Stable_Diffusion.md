@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Stable Diffusion: three ways to interact with the model (for free)"
-date:   2022-01-10
+date:   2023-01-10
 categories: [AI]
 excerpt: > #
   Stable diffusion is an open source text-to-image AI model. The model comes 

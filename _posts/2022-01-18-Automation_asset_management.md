@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Asset management and automation"
-date:   2022-01-18
+date:   2023-01-18
 categories: [AI, Finance]
 excerpt: > #
   How much automation in asset management is the right amount?
