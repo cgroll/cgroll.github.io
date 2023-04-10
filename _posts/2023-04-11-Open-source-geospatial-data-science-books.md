@@ -16,7 +16,11 @@ math: false
   - [Earth Analytics Course](https://www.earthdatascience.org/courses/earth-analytics-python//)
 - Ken Steif
   - [Public Policy Analytics: Code & Context for Data Science in Government](https://urbanspatial.github.io/PublicPolicyAnalytics/)
+- Sergio J. Rey, Dani Arribas-Bel, Levi J. Wolf
+  - [Geographic Data Science with Python](https://geographicdata.science/book/intro.html)
 - The carpentries
   - [Introduction to Geospatial Raster and Vector Data with Python](https://carpentries-incubator.github.io/geospatial-python/)
 - Qiusheng Wu
   - [Geospatial Data Science with Earth Engine and Geemap](https://book.geemap.org/)
+- Ujaval Gandhi
+  - [Mapping and Data Visualization with Python](https://courses.spatialthoughts.com/python-dataviz.html)
