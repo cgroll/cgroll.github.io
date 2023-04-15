@@ -24,3 +24,5 @@ math: false
   - [Geospatial Data Science with Earth Engine and Geemap](https://book.geemap.org/)
 - Ujaval Gandhi
   - [Mapping and Data Visualization with Python](https://courses.spatialthoughts.com/python-dataviz.html)
+- Michael Mann, Steven Chao, Jordan Graesser, Nina Feldman
+  - [PyGIS - Open Source Spatial Programming & Remote Sensing](https://pygis.io/docs/a_intro.html)
