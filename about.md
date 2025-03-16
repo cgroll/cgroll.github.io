@@ -59,32 +59,32 @@ quantitative approach:
 
 ### About Me
 
-My enthusiasm for statistical modeling goes back many years. I
-graduated in financial mathematics before I became a research
-assistant at the statistics department of Ludwig-Maximilians
-University (LMU). During that time I wrote my doctoral thesis at the
-chair of financial econometrics on "Dynamic Risk Management of
-Multi-asset Portfolios".
+My enthusiasm for statistical modeling, data, and AI goes back many years. I graduated in financial mathematics before becoming a research assistant at the statistics department of Ludwig-Maximilians University (LMU). During that time, I wrote my doctoral thesis at the Chair of Financial Econometrics on “Dynamic Risk Management of Multi-Asset Portfolios.”
 
 <br>
 
-I'm generally interested in a broad spectrum of socioeconomic topics,
-for example:
+After that, I joined Scalable Capital, where I helped develop a fully automated, data-driven investment strategy managing more than €2bn in assets. I also led the development of a deep learning NLP model for automated email classification and a recommender system based on collaborative filtering to enhance customer engagement.
+
+<br>
+
+
+Currently, I work as a Lead Architect AI at bridgingIT, where I design and implement AI solutions and data platforms for businesses across various industries.
+
+<br>
+
+I’m generally interested in a broad spectrum of socioeconomic and technological topics, including:
 
 - Earth observation, GIS
+- Energy transition, power grids
 - Smart city planning
-- Economics, Finance
+- Economics, finance
 - Crypto
 
 <br>
 
-My goal has always been to achieve a holistic view on socioeconomic
-phenomena, and to build a strong understanding about statistical
-methodologies. I am convinced that the best way of getting there is
-through active engagement with real world data, using statistical / AI
-modeling and state of the art software tools. In addition, I also like
-data visualizations and 3D modeling with Blender 3d. You know, to make
-sure to live up to the claim that "information is beautiful" ;-)
+My goal has always been to develop a holistic understanding of socioeconomic phenomena while building expertise in statistical methodologies and AI. I believe the best way to achieve this is through active engagement with real-world data, leveraging statistical/AI modeling and state-of-the-art software tools and technologies.
+
+Additionally, I enjoy data visualization and 3D modeling with Blender—because, after all, “information is beautiful.” 😉
 
 <br>
 
