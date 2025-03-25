@@ -14,9 +14,9 @@ Das Thema KI beschäftigt aktuell quasi alle Unternehmen. Zum einen, weil es bee
 
 ## Definition und Grundlagen der Künstlichen Intelligenz
 
-Als erstes: **Was ist Künstliche Intelligenz?**
+Als erstes: **Was ist Künstliche Intelligenz?** Die Definition des Europäischen Parlaments lautet: *Künstliche Intelligenz ist die Fähigkeit einer Maschine, menschliche Fähigkeiten wie logisches Denken, Lernen, Planen und Kreativität zu imitieren.*
 
-Die Definition des Europäischen Parlaments lautet: *Künstliche Intelligenz ist die Fähigkeit einer Maschine, menschliche Fähigkeiten wie logisches Denken, Lernen, Planen und Kreativität zu imitieren.*
+<br>
 
 Drei zentrale Faktoren bestimmen die Leistungsfähigkeit von KI:
 
@@ -31,6 +31,8 @@ Ein fertiges KI-Modell entsteht, indem ein bestimmter Algorithmus oder eine Mode
 <br>
 
 Wie sieht das Training eines KI-Modells aus? In der Regel erfolgt es im sogenannten Supervised Learning. Dabei werden dem Modell für gegebene Eingabedaten die erwarteten Ausgaben mitgegeben – zum Beispiel Bilder mit den zugehörigen Kategorien wie "Katze" oder "Hund" oder Audioaufnahmen mit dem entsprechenden Text. Die Parameter im Modell werden dann so angepasst, dass es möglichst zuverlässig die gewünschten Ausgaben liefert. Dabei ist es entscheidend zu verstehen, mit welchen Daten das Modell trainiert wurde: Ein Modell, das nur Katzen und Hunde gesehen hat, kann einen Eisbären nicht erkennen. Und ein Modell, das nur englische Sprache kennt, wird kein Chinesisch verstehen. Nur wer die Trainingsdaten kennt, kann auch realistisch einschätzen, wozu ein Modell fähig ist – und wozu nicht.
+
+<br>
 
 **Arten von KI-Algorithmen**
 
@@ -140,9 +142,13 @@ Diese Anwendungen betreffen potenziell alle Mitarbeitenden eines Unternehmens. E
 
 Ein zusätzlicher Mehrwert entsteht durch die Integration in bestehende IT-Landschaften. KI-gestützte Systeme, die mit internen Datenquellen verknüpft sind – etwa durch semantische Suche oder eingebettete Wissensdatenbanken – eröffnen ganz neue Möglichkeiten der Informationsbeschaffung. Eigene Assistenten mit vordefinierten Rollen und Systemprompts ermöglichen so eine iterative, kontextbasierte Nutzung unternehmensinterner Informationen.
 
+<br>
+
 **Automatisierung strukturierter Geschäftsprozesse:**
 
 Auch in klar definierten Prozessen lässt sich KI wirkungsvoll einsetzen – insbesondere im Dokumentenmanagement und in Supportprozessen. Durch Kombination von OCR-Technologien und KI-Modellen können Dokumente automatisiert analysiert, Inhalte extrahiert und in weiterverwendbare Formate überführt werden. Typische Workflows beinhalten den Upload einer Datei, die automatische Prüfung und Weiterleitung, eine optionale manuelle Freigabe, die strukturierte Ablage sowie Eskalationsmechanismen bei Unklarheiten. Erfolgreiche Implementierung solcher Prozesse erfordert nicht nur die technische Umsetzung, sondern auch die Qualifizierung der Mitarbeitenden zur effektiven Nutzung des neuen Workflows.
+
+<br>
 
 **Kundenservice und Support:**
 
@@ -162,6 +168,8 @@ Ein Beispiel aus dem E-Commerce: Ein Kunde fragt bei einem Online-Händler wie Z
 
 Neben Anwendungsfällen, bei denen KI menschliche Tätigkeiten unterstützt oder automatisiert, gibt es Szenarien, in denen KI-Systeme nicht nur schneller, sondern auch objektiv leistungsfähiger sind. Denn: KI kann enorme Datenmengen auswerten, systematische Muster identifizieren und daraus Erkenntnisse ableiten, die für Menschen – ohne datengetriebene Herangehensweise – kaum zugänglich wären. In diesen Anwendungsbereichen verschwimmen die Grenzen zur klassischen Datenanalyse und Data Science zunehmend.
 
+<br>
+
 **Vorhersagemodelle (Predictive Modeling):**
 
 Ein typisches Beispiel sind Wetterprognosen. Während früher Erfahrungsregeln wie *„Wenn die Schwalben tief fliegen, gibt es Regen“* herangezogen wurden, arbeiten heutige Vorhersagesysteme mit hochauflösenden numerischen Modellen, gespeist aus Satellitendaten, Sensoren und Wetterstationen weltweit. Der technologische Fortschritt hat dazu geführt, dass maschinelle Vorhersagen mittlerweile deutlich präziser sind als menschliche Einschätzungen.
@@ -169,6 +177,8 @@ Ein typisches Beispiel sind Wetterprognosen. Während früher Erfahrungsregeln w
 <br>
 
 Auch in anderen Bereichen – etwa bei Sportanalysen oder Fußballwetten – liefern KI-Modelle oft treffsicherere Prognosen. Durch die systematische Auswertung von Spielerstatistiken, Taktiken, Verletzungshistorien und früheren Ergebnissen können Maschinen Wahrscheinlichkeiten objektiver und umfassender berechnen als menschliche Experten.
+
+<br>
 
 **Empfehlungssysteme (Recommender Systems):**
 
@@ -179,6 +189,8 @@ Online-Plattformen wie Netflix, Spotify oder Amazon setzen konsequent auf KI-bas
 - Netflix empfiehlt Filme, basierend auf Ähnlichkeiten zu bereits angesehenen Titeln und dem Verhalten ähnlicher Nutzerprofile.
 - Amazon erkennt Muster im Kaufverhalten und schlägt beispielsweise automatisch Staubsaugerbeutel vor, sobald ein Staubsauger im Warenkorb liegt.
 - Auch im Finanzbereich helfen KI-basierte Empfehlungen dabei, individuell passende Anlageprodukte zu identifizieren – abgestimmt auf Verhalten, Vorlieben und Risikoprofile der Kundinnen und Kunden.
+
+<br>
 
 **Anomalieerkennung (Anomaly Detection):**
 
@@ -191,6 +203,8 @@ In der *Predictive Maintenance* etwa analysieren KI-Modelle Sensordaten von Masc
 <br>
 
 Auch im Bereich *Cybersecurity* ist die Fähigkeit zur Anomalieerkennung essenziell. Hier analysieren KI-Systeme kontinuierlich Telemetriedaten, um verdächtige Aktivitäten zu identifizieren – etwa ungewöhnlich viele Datei-Downloads, Anmeldungen aus fremden Regionen oder auffällige Abweichungen vom gewohnten Nutzerverhalten. Frühzeitig erkannt, ermöglichen solche Muster eine sofortige Reaktion auf potenzielle Sicherheitsvorfälle.
+
+<br>
 
 **"Make or Buy?" – Wer hat die besseren Daten?**
 
@@ -207,6 +221,8 @@ Im Bereich Cybersecurity profitieren Anbieter wie Avira von der Auswertung von M
 <br>
 
 Anders sieht es aus, wenn die eingesetzten Systeme stark unternehmensspezifisch sind – etwa bei der Telemetrie innerhalb individueller IT-Landschaften. Hier spielen Faktoren wie interne Softwarekonfigurationen, typische Arbeitsabläufe oder spezifische Sicherheitsrichtlinien eine große Rolle. Maßgeschneiderte, intern entwickelte Lösungen sind in solchen Fällen oft besser geeignet, da sie auf den konkreten Kontext zugeschnitten sind und die Besonderheiten der eigenen Umgebung gezielt berücksichtigen können.
+
+<br>
 
 **Fazit:**
 
