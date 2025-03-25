@@ -8,9 +8,8 @@ excerpt: > #
 math: false
 ---
 
-Das Thema KI beschäftigt aktuell quasi alle Unternehmen. Zum einen, weil es beeindruckende Fortschritte gibt, bspw. Fähigkeiten wie autonomes Fahren, leistungsstarke Sprachmodelle oder beeindruckende Bilderzeugung. Zum anderen, weil Studien existieren, die hohe Erwartungen schüren, weil erhebliche Produktivitätsgewinne durch KI prognostiziert werden. Auf der anderen Seite beschäftigt es aber auch Mitarbeiter, die beispielsweise Sorgen haben, dass KI bestehende Jobprofile verändern oder sogar ersetzen könnte.
+Das Thema KI beschäftigt aktuell alle Unternehmen. Zum einen, weil es beeindruckende Fortschritte gibt, bspw. Fähigkeiten wie autonomes Fahren, leistungsstarke Sprachmodelle oder beeindruckende Bilderzeugung. Zum anderen, weil Studien existieren, die hohe Erwartungen schüren, weil erhebliche Produktivitätsgewinne durch KI prognostiziert werden. Auf der anderen Seite beschäftigt es aber auch Mitarbeiter, die beispielsweise Sorgen haben, dass KI bestehende Jobprofile verändern oder sogar ersetzen könnte.
 
----
 
 ## Definition und Grundlagen der Künstlichen Intelligenz
 
@@ -104,7 +103,6 @@ Daneben gibt es Use Cases, bei denen das Modell selbst nochmals an spezifische D
 
 Und schließlich gibt es Anwendungsbereiche, für die es **keine vortrainierten Modelle** gibt – beispielsweise bei der **Analyse von Kundenverhalten** oder bei **personalisierenden Empfehlungssystemen (Recommender Systems)**. Hier existiert für gewöhnliche keine generell vortrainierte Abstraktion des zugrundeliegenden Problems, sodass Unternehmen gezwungen sind, komplett eigene Lösungen zu entwickeln – von der Datenaufbereitung über das Modelltraining bis zur Integration.
 
----
 
 ## KI-Anwendungsbeispiele
 
@@ -154,7 +152,6 @@ Auch in klar definierten Prozessen lässt sich KI wirkungsvoll einsetzen – ins
 
 Ein besonders sichtbarer Anwendungsbereich ist die Automatisierung im Kundenservice. KI kann entlang des gesamten Anfrageprozesses Mehrwert schaffen: durch die Früherkennung kritischer Anliegen, die automatische Klassifikation und Weiterleitung an die richtige Stelle, die kontextuelle Informationsbeschaffung aus CRM-Systemen oder Bestellhistorien sowie die Erstellung von Antwortentwürfen. Bei einfachen Anliegen kann sogar eine vollständig automatisierte Bearbeitung erfolgen – über E-Mail oder Chat.
 
----
 
 ### Ausblick: Agentenbasierte Assistenzsysteme
 
@@ -228,7 +225,6 @@ Anders sieht es aus, wenn die eingesetzten Systeme stark unternehmensspezifisch 
 
 Die Nutzung von KI bringt nicht per se einen Mehrwert – sie entfaltet ihr Potenzial erst durch den gezielten, durchdachten Einsatz in konkreten Use Cases. Unternehmen, die den Schritt von der reinen Technologiebegeisterung hin zur strategischen Anwendung schaffen, erschließen sich damit neue Geschäftsmodelle, steigern ihre Effizienz und verbessern nachhaltig ihre Wettbewerbsfähigkeit.
 
----
 
 ## Systematische Identifikation und Bewertung von KI-Anwendungsfällen
 
