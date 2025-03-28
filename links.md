@@ -10,26 +10,7 @@ that I have published somewhere on the web.
 
 #### AI-generated podcasts
 
-Related to [Künstliche Intelligenz mit Plan: So gelingt die Umsetzung im Unternehmen](https://quantitative-thinking.com/2025/03/AI-strategy/):
-
-Part 1:
-<audio controls>
-  <source src="https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-03-27-ai_with_a_strategy_part_1.wav" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-Part 2:
-<audio controls>
-  <source src="https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-03-27-ai_with_a_strategy_part_2.wav" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-Part 3:
-<audio controls>
-  <source src="https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-03-27-ai_with_a_strategy_part_3.wav" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
+As a dedicated podcast enthusiast, I have created an [RSS Feed](https://raw.githubusercontent.com/cgroll/cgroll.github.io/refs/heads/master/podcast_rss_feed.xml) featuring AI-generated podcasts. You can easily access and enjoy these podcasts using your favorite podcast tool.
 
 #### My previous blog
 
