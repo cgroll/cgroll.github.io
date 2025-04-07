@@ -31,6 +31,13 @@
       <guid>https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-03-27-ai_with_a_strategy_part_3.wav</guid>
       <pubDate>Wed, 27 Mar 2025 07:00:00 GMT</pubDate>
     </item>
+    <item>
+      <title>Responsible AI</title>
+      <description>An AI-generated overview of how quantum theory came to be — from Planck to Schrödinger.</description>
+      <enclosure url="https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-04-07-responsible_ai.wav" type="audio/wav"/>
+      <guid>https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-04-07-responsible_ai.wav</guid>
+      <pubDate>Sun, 06 Apr 2025 07:00:00 GMT</pubDate>
+    </item>
 
     <!-- Add more <item> blocks for additional episodes -->
   </channel>
