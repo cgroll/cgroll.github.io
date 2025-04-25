@@ -69,5 +69,6 @@ In the ECDF comparing 2016 and 2024, we see two curves. The curve for 2024 is cl
 
 Germany's energy transition is a dynamic process, reflected clearly in its electricity data. Demand follows established patterns, while the generation mix steadily incorporates more renewables. The growing contribution of wind and solar is undeniable progress. However, the data also starkly illustrates the challenge of managing variability. The persistent need for conventional power during periods of high residual load underscores that grid expansion, flexible backup systems, and significant advancements in energy storage are not just desirable but essential components for navigating the final stages of the *Energiewende* and ensuring a stable, reliable, and green power future.
 
+<br>
 
 **Disclaimer**: Credit where credit's due: I wrestled the data into submission and drew the conclusions. My AI assistant then helped dress those findings up in proper sentences, saving you from my purely technical jargon. You're welcome.
