@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Recommender Systems in Financial Services"
-date:   2025-05-03
+date:   2025-05-04
 categories: [AI]
 excerpt: > #
   Recommender systems often begin with matrix factorization, but achieve greater nuance by adding explicit user and item features into more complex predictive models.
