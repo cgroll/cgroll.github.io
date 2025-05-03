@@ -38,6 +38,27 @@
       <guid>https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-04-07-responsible_ai.wav</guid>
       <pubDate>Sun, 06 Apr 2025 07:00:00 GMT</pubDate>
     </item>
+    <item>
+      <title>Recommender Systems (EN)</title>
+      <description>An AI-generated overview of how quantum theory came to be — from Planck to Schrödinger.</description>
+      <enclosure url="https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-05-03-recommender_systems_en.wav" type="audio/wav"/>
+      <guid>https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-05-03-recommender_systems_en.wav</guid>
+      <pubDate>Sun, 03 May 2025 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Recommender Systems (DE)</title>
+      <description>An AI-generated overview of how quantum theory came to be — from Planck to Schrödinger.</description>
+      <enclosure url="https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-05-03-recommender_systems_de.wav" type="audio/wav"/>
+      <guid>https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-05-03-recommender_systems_de.wav</guid>
+      <pubDate>Sun, 03 May 2025 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Sensors, Raspi and Robots</title>
+      <description>An AI-generated overview of how quantum theory came to be — from Planck to Schrödinger.</description>
+      <enclosure url="https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-05-03-sensors_raspi_robots.wav" type="audio/wav"/>
+      <guid>https://github.com/cgroll/ai-podcasts/raw/refs/heads/main/audio-files/2025-05-03-sensors_raspi_robots.wav</guid>
+      <pubDate>Sun, 03 May 2025 09:00:00 GMT</pubDate>
+    </item>
 
     <!-- Add more <item> blocks for additional episodes -->
   </channel>
