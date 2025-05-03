@@ -7,10 +7,7 @@ excerpt: > #
   Recommender systems often begin with matrix factorization, but achieve greater nuance by adding explicit user and item features into more complex predictive models.
 math: true
 ---
-
-## Personalizing the Client Experience: Exploring Recommender Systems in Financial Services
-
-A recent conversation with a colleague about recommender systems reminded me of earlier work exploring their potential in the financial services sector. As some time had passed, I took the opportunity to revisit the topic and jot down key insights. Although deploying such systems for fully automated investment advice involves significant regulatory challenges—such as suitability requirements and GDPR compliance—the underlying concepts remain highly relevant. When applied thoughtfully, these techniques can yield deeper client insights, improve engagement, and help surface relevant products or content in a compliant manner, even without relying on direct automation.
+A recent conversation with a colleague reminded me of earlier work exploring the potential of recommender systems in the financial services sector. As quite some time had passed since then, I took the opportunity to revisit the topic and write down some key insights for future reference. Although deploying such systems for fully automated investment advice involves significant regulatory challenges—such as suitability requirements and GDPR compliance—the underlying concepts remain highly relevant. When applied thoughtfully, these techniques can yield deeper client insights, improve engagement, and help surface relevant products or content in a compliant manner, even without relying on direct automation.
 
 <br>
 
@@ -114,8 +111,4 @@ Raw model outputs invariably require careful post-processing and consideration o
 
 <br>
 
-**Looking Ahead**
-
-<br>
-
-Exploring recommender system techniques in finance involves careful data handling, thoughtful modeling, and rigorous validation. While direct automated advice faces hurdles, the potential for these methods to deepen client understanding, personalize communications, facilitate discovery, and support advisors within compliant frameworks makes them a vital area of ongoing exploration. Advanced techniques like sequence-aware models, GNNs, and hybrid approaches continue to evolve, alongside the critical need for robust explainability and testing.
+**Disclaimer**: This post is the result of me chatting with an AI to dust off my knowledge on this topic. The AI then kindly drafted this summary based on our talk and my outline, serving as my personal 'don't forget!' note for the future – because apparently, my brain isn't a perfect recording device. I've made minor edits for clarity.
