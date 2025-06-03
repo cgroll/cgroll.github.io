@@ -1,3 +1,10 @@
+// If you have these lines at the top of your original main.scss, keep them.
+// They are typical for Minima theme customization.
+// @import "minima/skins/{{ site.minima.skin | default: 'classic' }}";
+// @import "minima/initialize"; // This usually brings in variables like $spacing-unit
+
+// --- START OF THE MODIFIED CSS FILE ---
+
 html {
   font-size: $base-font-size;
 }
@@ -10,10 +17,7 @@ p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
   margin: 0;
   padding: 0;
-
 }
-
-
 
 /**
  * Basic styling
@@ -24,9 +28,9 @@ body {
   background-color: $background-color;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
-     -moz-font-feature-settings: "kern" 1;
-       -o-font-feature-settings: "kern" 1;
-          font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
   font-kerning: normal;
   display: flex;
   min-height: 100vh;
@@ -34,14 +38,12 @@ body {
   overflow-wrap: break-word;
 }
 
-
-
 /**
- * Set `margin-bottom` to maintain vertical rhythm
+ * Set `margin-bottom` to maintain vertical rhythm for general elements.
+ * Specific top/bottom margins for headings, lists, and tables are handled below.
  */
-h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
-ul, ol, dl, figure,
+dl, figure,
 %vertical-rhythm {
   margin-bottom: $spacing-unit * .5;
 }
@@ -58,8 +60,6 @@ main {
   display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */
 }
 
-
-
 /**
  * Images
  */
@@ -67,8 +67,6 @@ img {
   max-width: 100%;
   vertical-align: middle;
 }
-
-
 
 /**
  * Figures
@@ -81,32 +79,32 @@ figcaption {
   font-size: $small-font-size;
 }
 
-
-
 /**
  * Lists
  */
 ul, ol {
   margin-left: $spacing-unit;
+  margin-top: $spacing-unit * 0.75;    // MODIFIED: Added space BEFORE lists (adjust 0.75 as needed)
+  margin-bottom: $spacing-unit * .5;   // Default Minima space AFTER lists
 }
 
 li {
   > ul,
   > ol {
     margin-bottom: 0;
+    // Optionally, add some top margin for nested lists if they feel too close
+    // margin-top: $spacing-unit * 0.25;
   }
 }
-
-
 
 /**
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
+  margin-top: $spacing-unit * 1;       // MODIFIED: Added space BEFORE headings (adjust * 1 as needed)
+  margin-bottom: $spacing-unit * .5;   // Default Minima space AFTER headings
 }
-
-
 
 /**
  * Links
@@ -133,7 +131,6 @@ a {
   }
 }
 
-
 /**
  * Blockquotes
  */
@@ -141,7 +138,7 @@ blockquote {
   color: $brand-color;
   border-left: 4px solid $border-color-01;
   padding-left: $spacing-unit * .5;
-  @include relative-font-size(1.125);
+  @include relative-font-size(1.125); // Assumes @mixin relative-font-size is available via Minima's imports
   letter-spacing: -1px;
   font-style: italic;
 
@@ -154,11 +151,16 @@ blockquote {
   }
 }
 
+// Variables for Code formatting & Tables (from your provided snippet)
+// Ensure these are defined, possibly via Minima's imports or explicitly here if not.
+// $code-font-family: monospace !default; // Example, if not already defined
+// $border-color-01: #f0f0f0 !default;    // Example
+// $code-background-color: #f8f8f8 !default; // Example
 
-$grey-color:       #828282 !default;
+$grey-color:        #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
-$orange-color:     #f66a0a !default;
+$orange-color:      #f66a0a !default; // Used in .orange class, not directly in table structure
 $table-text-align: left !default;
 
 /**
@@ -166,11 +168,11 @@ $table-text-align: left !default;
  */
 pre,
 code {
-  font-family: $code-font-family;
-  font-size: 0.9375em;
-  border: 1px solid $border-color-01;
+  font-family: $code-font-family; // Ensure $code-font-family is defined
+  font-size: 0.9375em; // Consider using $small-font-size or a relative unit
+  border: 1px solid $border-color-01; // Ensure $border-color-01 is defined
   border-radius: 3px;
-  background-color: $code-background-color;
+  background-color: $code-background-color; // Ensure $code-background-color is defined
 }
 
 code {
@@ -188,37 +190,34 @@ pre {
   }
 }
 
+// .highlight likely comes from Jekyll's syntax highlighter (Rouge)
 .highlight {
   border-radius: 3px;
-  background: $code-background-color;
-  @extend %vertical-rhythm;
+  background: $code-background-color; // Ensure $code-background-color is defined
+  @extend %vertical-rhythm; // This will add margin-bottom: $spacing-unit * .5;
 
-  .highlighter-rouge & {
-    background: $code-background-color;
+  .highlighter-rouge & { // Specificity for Rouge
+    background: $code-background-color; // Ensure $code-background-color is defined
   }
 }
-
-
 
 /**
  * Wrapper
  */
 .wrapper {
-  max-width: calc(#{$content-width} - (#{$spacing-unit}));
+  max-width: calc(#{$content-width} - (#{$spacing-unit})); // Ensure $content-width is defined
   margin-right: auto;
   margin-left: auto;
   padding-right: $spacing-unit * .5;
   padding-left: $spacing-unit * .5;
   @extend %clearfix;
 
-  @media screen and (min-width: $on-large) {
+  @media screen and (min-width: $on-large) { // Ensure $on-large is defined
     max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
   }
 }
-
-
 
 /**
  * Clearfix
@@ -229,18 +228,15 @@ pre {
   clear: both;
 }
 
-
-
 /**
  * Icons
  */
-
 .orange {
-  color: #f66a0a;
+  color: #f66a0a; // $orange-color could be used here if defined for this purpose
 }
 
 .grey {
-  color: #828282;
+  color: #828282; // $grey-color could be used here
 }
 
 .svg-icon {
@@ -251,26 +247,26 @@ pre {
   vertical-align: text-bottom;
 }
 
-
 /**
  * Tables
  */
 table {
-  margin-bottom: $spacing-unit;
+  margin-top: $spacing-unit * 1;       // MODIFIED: Added space BEFORE tables (adjust * 1 as needed)
+  margin-bottom: $spacing-unit;        // Default Minima space AFTER tables
   text-align: $table-text-align;
-  color: lighten($text-color, 18%);
+  color: lighten($text-color, 18%);    // Ensure $text-color is defined
   border-collapse: collapse;
   border: 1px solid $grey-color-light;
   tr {
     &:nth-child(even) {
-      background-color: transparent;
+      background-color: transparent; // Or $grey-color-light, adjust as per Minima's actual default if different
     }
   }
   th, td {
     padding: ($spacing-unit / 3) ($spacing-unit / 2);
   }
   th {
-    background-color: transparent;
+    background-color: transparent; // Or $grey-color-light, adjust as per Minima's actual default if different
     border: 1px solid darken($grey-color-light, 4%);
     border-bottom-color: darken($grey-color-light, 12%);
   }
@@ -278,3 +274,5 @@ table {
     border: 1px solid $grey-color-light;
   }
 }
+
+// --- END OF THE MODIFIED CSS FILE ---
