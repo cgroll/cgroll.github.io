@@ -4,7 +4,7 @@ title:  "Async Python"
 date:   2025-06-02
 categories: [Tools]
 excerpt: > #
-  Understanding When Your Code *Actually* Pauses.
+  This post breaks down asynchronous Python, offering a straightforward example to illustrate the sequence of execution.
 math: false
 ---
 
@@ -93,5 +93,6 @@ A sequence diagram can help visualize this yielding and resuming of control:
 ### Key Takeaway
 
 The power of `asyncio` comes from this cooperative yielding. Your coroutines run their synchronous parts and then explicitly `await` when they need to wait for something, allowing the event loop to efficiently manage other tasks. Understanding that your code *after* `asyncio.create_task` but *before* the first `await` in that same coroutine still runs synchronously is key to correctly structuring your async programs.
+
 
 **Disclaimer**: This post is the result of me chatting with an AI to dust off my knowledge on this topic. The AI then kindly drafted this summary based on our talk and my outline, serving as my personal ‘don’t forget!’ note for the future – because apparently, my brain isn’t a perfect recording device. I’ve made minor edits for clarity.
