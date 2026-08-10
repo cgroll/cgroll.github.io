@@ -1,0 +1,321 @@
+<title>Voice Pipeline — Step Through</title>
+<style>
+  :root{
+    color-scheme: light;
+    --bg: #fdfdfd;
+    --grid: #dfe7e4;
+    --fg: #1c2b28;
+    --fg-dim: #5b726d;
+    --audio-in: #0f9c86;
+    --audio-in-2: #1f6fb0;
+    --audio-silent: #d3ddd9;
+    --stt-text-dim: #9a9186;
+    --trigger: #c9670f;
+    --trigger-dim: #a9793f;
+    --llm: #6b46c1;
+    --token-1: #6b46c1;
+    --token-2: #9c3f93;
+    --token-3: #c23458;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, "Roboto Mono", monospace;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--mono);
+    padding:40px 20px;
+  }
+
+  .wrap{ width:100%; max-width:1000px; display:flex; flex-direction:column; gap:20px; }
+
+  .eyebrow{
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--fg-dim); text-align:center; margin:0;
+  }
+
+  .controls{
+    display:flex; align-items:center; gap:18px;
+    justify-content:center;
+  }
+  .nav-btn{
+    font-family:var(--mono); font-size:20px; line-height:1;
+    background:transparent; color:var(--fg); border:1px solid var(--grid);
+    border-radius:8px; width:40px; height:40px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .2s, color .2s;
+  }
+  .nav-btn:hover{ border-color:var(--audio-in); color:var(--audio-in); }
+  .nav-btn:focus-visible{ outline:2px solid var(--audio-in); outline-offset:2px; }
+
+  .headline-block{ text-align:center; max-width:640px; }
+  #headline{ margin:0 0 6px; font-size:21px; font-weight:600; line-height:1.3; min-height:2.6em; display:flex; align-items:center; justify-content:center; text-wrap:balance; }
+  #subtext{ margin:0; font-size:14px; color:var(--fg-dim); line-height:1.5; min-height:3em; }
+
+  .dots{ display:flex; gap:7px; justify-content:center; flex-wrap:wrap; }
+  .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--grid); border:none; cursor:pointer; padding:0;
+    transition:background .2s, transform .2s;
+  }
+  .dot:hover{ transform:scale(1.3); }
+  .dot.on{ background:var(--audio-in); }
+
+  figure{ margin:0; }
+  svg{ width:100%; height:auto; display:block; }
+  text{ font-family:var(--mono); }
+
+  figcaption{
+    margin-top:16px; text-align:center; font-size:15px; color:var(--fg-dim);
+  }
+
+  .lane-label{ font-size:12px; letter-spacing:.1em; fill:var(--fg-dim); }
+  .sub-label{ font-size:10.5px; fill:var(--fg-dim); }
+  .sub-label.trig{ fill:var(--trigger-dim); }
+
+  /* generic cumulative reveal: visible once its step has been reached */
+  .reveal{ opacity:0; transform:translateY(6px); transition:opacity .5s ease, transform .5s ease; }
+  .reveal.active{ opacity:1; transform:translateY(0); }
+  .bar.reveal{ transition:opacity .4s ease; transform:none; }
+
+  .silent-bar{ fill:var(--audio-silent); }
+
+  /* chain colors: same hue follows one spoken chunk across audio -> VAD -> STT */
+  .chain-a{ fill:var(--audio-in); stroke:var(--audio-in); }
+  .chain-b{ fill:var(--audio-in-2); stroke:var(--audio-in-2); }
+
+  /* token colors: same hue follows one streamed token across LLM -> TTS */
+  .tok-1{ fill:var(--token-1); }
+  .tok-2{ fill:var(--token-2); }
+  .tok-3{ fill:var(--token-3); }
+
+  .tick.chain-a.reveal.active{ filter:drop-shadow(0 1px 2px rgba(15,156,134,.35)); }
+  .tick.chain-b.reveal.active{ filter:drop-shadow(0 1px 2px rgba(31,111,176,.35)); }
+
+  .key-icon{ transition:opacity .5s ease, transform .5s ease, filter .5s ease; }
+  .key-icon.active{ opacity:1; transform:scale(1); filter:drop-shadow(0 1px 3px rgba(201,103,15,.4)); }
+
+  .transcript text{ transition:fill .7s ease; }
+  .transcript.sent .chain-a,
+  .transcript.sent .chain-b{ fill:var(--stt-text-dim); }
+
+  .pulse-dot{ transform-box:fill-box; transform-origin:center; }
+  @keyframes gentlePulse{
+    0%,100%{ transform:scale(1); opacity:.6; }
+    50%{ transform:scale(1.4); opacity:1; }
+  }
+  .pulse-dot.active{ animation:gentlePulse 1.1s ease-in-out 2; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ transition:none; }
+    .pulse-dot.active{ animation:none; }
+  }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">voice pipeline · step through</p>
+
+  <div class="controls">
+    <button class="nav-btn" id="prev" aria-label="Previous step">‹</button>
+    <div class="headline-block">
+      <h2 id="headline"></h2>
+      <p id="subtext"></p>
+    </div>
+    <button class="nav-btn" id="next" aria-label="Next step">›</button>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <figure>
+    <svg viewBox="0 0 1000 620" role="img" aria-label="Five-lane diagram of a voice pipeline: audio input, speech-to-text, what the LLM receives, what it produces, and text-to-speech. Each spoken chunk keeps one color from its audio bars through to its transcript text, showing that transcription lags behind speech. Each streamed reply token keeps one color through to its spoken audio, arriving one token behind.">
+
+      <text x="70" y="30" class="lane-label" fill="var(--fg-dim)">YOU</text>
+      <text x="930" y="30" class="lane-label" text-anchor="end" fill="var(--fg-dim)">ASSISTANT</text>
+
+      <!-- LANE 1: audio in -->
+      <text x="70" y="58" class="lane-label">AUDIO IN</text>
+      <line x1="55" y1="110" x2="945" y2="110" stroke="var(--grid)" stroke-width="1"/>
+
+      <g id="s1-bars">
+        <rect class="bar reveal chain-a" data-step="1" x="70"  y="100" width="10" height="20" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="90"  y="92"  width="10" height="36" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="110" y="84"  width="10" height="52" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="130" y="96"  width="10" height="28" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="150" y="80"  width="10" height="60" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="170" y="88"  width="10" height="44" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="190" y="94"  width="10" height="32" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="210" y="76"  width="10" height="68" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="230" y="90"  width="10" height="40" rx="3"/>
+        <rect class="bar reveal chain-a" data-step="1" x="250" y="98"  width="10" height="24" rx="3"/>
+      </g>
+
+      <g id="gap1-bars">
+        <rect class="bar reveal silent-bar" data-step="2" x="264" y="107" width="8" height="6" rx="2"/>
+        <rect class="bar reveal silent-bar" data-step="2" x="278" y="107" width="8" height="6" rx="2"/>
+        <rect class="bar reveal silent-bar" data-step="2" x="292" y="107" width="8" height="6" rx="2"/>
+      </g>
+
+      <g id="s2-bars">
+        <rect class="bar reveal chain-b" data-step="3" x="312" y="98"  width="10" height="24" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="332" y="86"  width="10" height="48" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="352" y="78"  width="10" height="64" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="372" y="92"  width="10" height="36" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="392" y="84"  width="10" height="52" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="412" y="96"  width="10" height="28" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="432" y="90"  width="10" height="40" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="452" y="80"  width="10" height="60" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="472" y="94"  width="10" height="32" rx="3"/>
+        <rect class="bar reveal chain-b" data-step="3" x="492" y="99"  width="10" height="22" rx="3"/>
+      </g>
+
+      <g id="gap2-bars">
+        <rect class="bar reveal silent-bar" data-step="4" x="506" y="107" width="8" height="6" rx="2"/>
+        <rect class="bar reveal silent-bar" data-step="4" x="520" y="107" width="8" height="6" rx="2"/>
+        <rect class="bar reveal silent-bar" data-step="4" x="534" y="107" width="8" height="6" rx="2"/>
+      </g>
+
+      <!-- VAD gutter: fires the moment silence is noticed, colored to the chunk it closes off -->
+      <line class="tick chain-a reveal" data-step="2" x1="303" y1="145" x2="303" y2="175" stroke-width="4" stroke-linecap="round"/>
+      <text class="sub-label reveal" data-step="2" x="313" y="164">VAD · auto</text>
+
+      <!-- LANE 2: STT -->
+      <text x="70" y="192" class="lane-label">STT</text>
+      <line x1="55" y1="205" x2="945" y2="205" stroke="var(--grid)" stroke-width="1"/>
+      <circle class="pulse-dot reveal chain-a" data-step="3" cx="40" cy="205" r="7"/>
+      <circle class="pulse-dot reveal chain-b" data-step="5" cx="40" cy="205" r="7"/>
+
+      <g id="transcript" class="transcript">
+        <text class="reveal chain-a" data-step="3" x="70"  y="211" font-size="19">Turn off the lights.</text>
+        <text class="reveal chain-b" data-step="5" x="312" y="211" font-size="19">Lock the front door.</text>
+      </g>
+
+      <!-- SEND gutter -->
+      <g class="key-icon reveal" data-step="4" id="key">
+        <rect x="580" y="222" width="38" height="26" rx="6" fill="none" stroke="var(--trigger)" stroke-width="2.5"/>
+        <line x1="599" y1="240" x2="599" y2="230" stroke="var(--trigger)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="592" y1="235" x2="599" y2="228" stroke="var(--trigger)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="606" y1="235" x2="599" y2="228" stroke="var(--trigger)" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <text class="sub-label trig reveal" data-step="4" x="580" y="266">SEND · manual, once</text>
+
+      <!-- LANE 3: LLM receives -->
+      <text x="70" y="292" class="lane-label">LLM · RECEIVES</text>
+      <line x1="55" y1="305" x2="945" y2="305" stroke="var(--grid)" stroke-width="1"/>
+      <circle class="pulse-dot reveal" data-step="6" cx="40" cy="305" r="7" fill="var(--llm)"/>
+      <text class="reveal" data-step="6" x="70" y="311" font-size="16"
+        ><tspan class="chain-a">Turn off the lights. </tspan><tspan class="chain-b">Lock the front door.</tspan></text>
+
+      <!-- LANE 4: LLM produces -->
+      <text x="70" y="362" class="lane-label">LLM · PRODUCES</text>
+      <line x1="55" y1="375" x2="945" y2="375" stroke="var(--grid)" stroke-width="1"/>
+      <circle class="pulse-dot reveal tok-1" data-step="7" cx="40" cy="375" r="7"/>
+      <circle class="pulse-dot reveal tok-2" data-step="8" cx="40" cy="375" r="7"/>
+      <circle class="pulse-dot reveal tok-3" data-step="9" cx="40" cy="375" r="7"/>
+
+      <text class="token reveal tok-1" data-step="7" x="70"  y="381" font-size="18">Lights off,</text>
+      <text class="token reveal tok-2" data-step="8" x="178" y="381" font-size="18">&#160;door</text>
+      <text class="token reveal tok-3" data-step="9" x="229" y="381" font-size="18">&#160;locked.</text>
+
+      <!-- LANE 5: TTS out, always one token behind LLM · PRODUCES -->
+      <text x="70" y="478" class="lane-label">TTS OUT</text>
+      <line x1="55" y1="520" x2="945" y2="520" stroke="var(--grid)" stroke-width="1"/>
+      <circle class="pulse-dot reveal tok-1" data-step="8" cx="40" cy="520" r="7"/>
+      <circle class="pulse-dot reveal tok-2" data-step="9" cx="40" cy="520" r="7"/>
+      <circle class="pulse-dot reveal tok-3" data-step="10" cx="40" cy="520" r="7"/>
+
+      <g id="out1">
+        <rect class="bar reveal tok-1" data-step="8" x="70"  y="506" width="10" height="28" rx="3"/>
+        <rect class="bar reveal tok-1" data-step="8" x="90"  y="498" width="10" height="44" rx="3"/>
+        <rect class="bar reveal tok-1" data-step="8" x="110" y="490" width="10" height="60" rx="3"/>
+        <rect class="bar reveal tok-1" data-step="8" x="130" y="502" width="10" height="36" rx="3"/>
+        <rect class="bar reveal tok-1" data-step="8" x="150" y="494" width="10" height="52" rx="3"/>
+        <rect class="bar reveal tok-1" data-step="8" x="170" y="508" width="10" height="24" rx="3"/>
+      </g>
+      <g id="out2">
+        <rect class="bar reveal tok-2" data-step="9" x="205" y="504" width="10" height="32" rx="3"/>
+        <rect class="bar reveal tok-2" data-step="9" x="225" y="492" width="10" height="56" rx="3"/>
+        <rect class="bar reveal tok-2" data-step="9" x="245" y="500" width="10" height="40" rx="3"/>
+        <rect class="bar reveal tok-2" data-step="9" x="265" y="486" width="10" height="68" rx="3"/>
+        <rect class="bar reveal tok-2" data-step="9" x="285" y="506" width="10" height="28" rx="3"/>
+      </g>
+      <g id="out3">
+        <rect class="bar reveal tok-3" data-step="10" x="320" y="502" width="10" height="36" rx="3"/>
+        <rect class="bar reveal tok-3" data-step="10" x="340" y="490" width="10" height="60" rx="3"/>
+        <rect class="bar reveal tok-3" data-step="10" x="360" y="482" width="10" height="76" rx="3"/>
+        <rect class="bar reveal tok-3" data-step="10" x="380" y="498" width="10" height="44" rx="3"/>
+        <rect class="bar reveal tok-3" data-step="10" x="400" y="506" width="10" height="28" rx="3"/>
+        <rect class="bar reveal tok-3" data-step="10" x="420" y="510" width="10" height="20" rx="3"/>
+        <rect class="bar reveal tok-3" data-step="10" x="440" y="508" width="10" height="24" rx="3"/>
+      </g>
+
+    </svg>
+    <figcaption>VAD picks up every pause automatically. Sending it to the LLM is a decision, not a timer.</figcaption>
+  </figure>
+</div>
+
+<script>
+  const steps = [
+    { h: "You start speaking", s: "" },
+    { h: "You pause — VAD notices", s: "A chunk boundary is marked. Nothing has been transcribed yet." },
+    { h: "You keep talking, while the first chunk finishes transcribing", s: "Speech-to-text has a little lag of its own — the transcript lands only now, colored to match the sentence it came from." },
+    { h: "You decide you're done, and press send", s: "No VAD needed here — the manual trigger fires on its own, whether or not a pause was even detected." },
+    { h: "One more transcription to catch up on", s: "The last stretch of audio still has to go through STT before anything can be sent." },
+    { h: "Both chunks arrive at the LLM together", s: "The colors carried over show which spoken chunk became which part of the transcript." },
+    { h: "The reply starts streaming", s: "First token out. Nothing spoken yet — text-to-speech needs a little buffer before it can start." },
+    { h: "Speech catches up, one token behind", s: "TTS begins on the first token exactly as the second one arrives." },
+    { h: "Streaming continues, still one step behind", s: "" },
+    { h: "The last word is spoken", s: "No more tokens coming — TTS just finishes what it already has." }
+  ];
+
+  let current = 1;
+  const total = steps.length;
+
+  const headlineEl = document.getElementById("headline");
+  const subtextEl = document.getElementById("subtext");
+  const dotsEl = document.getElementById("dots");
+  const revealEls = document.querySelectorAll("[data-step]");
+  const transcriptEl = document.getElementById("transcript");
+
+  for (let i = 1; i <= total; i++) {
+    const dot = document.createElement("button");
+    dot.className = "dot";
+    dot.setAttribute("aria-label", "Go to step " + i);
+    dot.addEventListener("click", () => { current = i; render(); });
+    dotsEl.appendChild(dot);
+  }
+  const dotEls = dotsEl.querySelectorAll(".dot");
+
+  function render() {
+    headlineEl.textContent = steps[current - 1].h;
+    subtextEl.textContent = steps[current - 1].s;
+
+    revealEls.forEach(el => {
+      el.classList.toggle("active", Number(el.dataset.step) <= current);
+    });
+
+    transcriptEl.classList.toggle("sent", current >= 6);
+
+    dotEls.forEach((d, i) => d.classList.toggle("on", i === current - 1));
+  }
+
+  document.getElementById("next").addEventListener("click", () => {
+    current = current >= total ? 1 : current + 1;
+    render();
+  });
+  document.getElementById("prev").addEventListener("click", () => {
+    current = current <= 1 ? total : current - 1;
+    render();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") document.getElementById("next").click();
+    if (e.key === "ArrowLeft") document.getElementById("prev").click();
+  });
+
+  render();
+</script>

@@ -1,0 +1,401 @@
+<title>Voice Pipeline — Two Triggers</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --bg: #0a1412;
+    --grid: #17332d;
+    --fg: #dce8e4;
+    --fg-dim: #6f8f88;
+    --audio-in: #4fe0c7;
+    --audio-in-dim: #2d6d63;
+    --vad-tick: #cffcf3;
+    --stt-text: #e9e3ce;
+    --stt-text-dim: #8f8a76;
+    --trigger: #ff9b42;
+    --trigger-dim: #8a5a2c;
+    --llm: #a594ff;
+    --llm-dim: #6a5fa8;
+    --audio-out: #ff6f8f;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, "Roboto Mono", monospace;
+    --cycle: 9s;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--mono);
+    padding:48px 24px;
+  }
+
+  .stage{
+    width:100%;
+    max-width:1200px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--fg-dim);
+    text-align:center;
+  }
+
+  figure{ margin:0; }
+
+  svg{ width:100%; height:auto; display:block; }
+
+  figcaption{
+    margin-top:22px;
+    text-align:center;
+    font-size:18px;
+    line-height:1.55;
+    color:var(--fg);
+    max-width:640px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  figcaption b{ color:var(--trigger); font-weight:600; }
+
+  text{ font-family:var(--mono); }
+
+  .label-corner{ font-size:13px; letter-spacing:.14em; fill:var(--fg-dim); }
+  .label-stage{ font-size:14px; letter-spacing:.08em; fill:var(--fg); font-weight:600; }
+  .label-sub{ font-size:10.5px; letter-spacing:.05em; fill:var(--fg-dim); }
+  .label-sub.trig{ fill:var(--trigger-dim); }
+
+  /* ---- input waveform bars ---- */
+  .bar{ }
+  @keyframes barG1{
+    0%,11%{ opacity:0; fill:var(--audio-in); }
+    13%{ opacity:1; fill:var(--audio-in); }
+    16%{ fill:var(--audio-in-dim); }
+    90%{ opacity:1; fill:var(--audio-in-dim); }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes barG2{
+    0%,22%{ opacity:0; fill:var(--audio-in); }
+    25%{ opacity:1; fill:var(--audio-in); }
+    27%{ fill:var(--audio-in-dim); }
+    90%{ opacity:1; fill:var(--audio-in-dim); }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes barG3{
+    0%,33%{ opacity:0; fill:var(--audio-in); }
+    36%{ opacity:1; fill:var(--audio-in); }
+    38%{ fill:var(--audio-in-dim); }
+    90%{ opacity:1; fill:var(--audio-in-dim); }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .bar-g1{ animation:barG1 var(--cycle) infinite linear; }
+  .bar-g2{ animation:barG2 var(--cycle) infinite linear; }
+  .bar-g3{ animation:barG3 var(--cycle) infinite linear; }
+
+  /* ---- VAD ticks (fire on a fixed cadence, independent of turn end) ---- */
+  @keyframes tick1{
+    0%,11%{ opacity:0; }
+    12%{ opacity:1; filter:drop-shadow(0 0 6px var(--vad-tick)); }
+    16%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes tick2{
+    0%,22%{ opacity:0; }
+    23%{ opacity:1; filter:drop-shadow(0 0 6px var(--vad-tick)); }
+    27%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes tick3{
+    0%,33%{ opacity:0; }
+    34%{ opacity:1; filter:drop-shadow(0 0 6px var(--vad-tick)); }
+    38%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .tick-1{ animation:tick1 var(--cycle) infinite linear; }
+  .tick-2{ animation:tick2 var(--cycle) infinite linear; }
+  .tick-3{ animation:tick3 var(--cycle) infinite linear; }
+
+  /* ---- STT dot pulses once per VAD tick ---- */
+  @keyframes sttDot{
+    0%,10%{ transform:scale(1); opacity:.45; }
+    12%{ transform:scale(1.45); opacity:1; }
+    15%{ transform:scale(1); opacity:.45; }
+    21%{ transform:scale(1); opacity:.45; }
+    23%{ transform:scale(1.45); opacity:1; }
+    26%{ transform:scale(1); opacity:.45; }
+    32%{ transform:scale(1); opacity:.45; }
+    34%{ transform:scale(1.45); opacity:1; }
+    37%{ transform:scale(1); opacity:.45; }
+    90%{ transform:scale(1); opacity:.45; }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .stt-dot{ animation:sttDot var(--cycle) infinite linear; transform-box:fill-box; transform-origin:center; }
+
+  /* ---- transcript text, one chunk per VAD-picked-up segment ---- */
+  @keyframes chunk1{
+    0%,11%{ opacity:0; transform:translateY(4px); }
+    13%{ opacity:1; transform:translateY(0); }
+    90%{ opacity:1; }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes chunk2{
+    0%,22%{ opacity:0; transform:translateY(4px); }
+    24%{ opacity:1; transform:translateY(0); }
+    90%{ opacity:1; }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes chunk3{
+    0%,33%{ opacity:0; transform:translateY(4px); }
+    35%{ opacity:1; transform:translateY(0); }
+    90%{ opacity:1; }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .chunk-1{ animation:chunk1 var(--cycle) infinite linear; }
+  .chunk-2{ animation:chunk2 var(--cycle) infinite linear; }
+  .chunk-3{ animation:chunk3 var(--cycle) infinite linear; }
+
+  /* whole transcript flashes once, then locks to a dim "sent" tone */
+  @keyframes transcriptSent{
+    0%,42%{ fill:var(--stt-text); }
+    43%{ fill:#ffffff; }
+    46%{ fill:var(--stt-text-dim); }
+    90%{ fill:var(--stt-text-dim); }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .transcript{ animation:transcriptSent var(--cycle) infinite linear; }
+
+  /* ---- explicit SEND trigger: one deliberate press, not a timer ---- */
+  @keyframes keyPress{
+    0%,41%{ opacity:.4; transform:scale(1); filter:none; }
+    43%{ opacity:1; transform:scale(1.18) translateY(2px); filter:drop-shadow(0 0 10px var(--trigger)); }
+    46%{ opacity:.9; transform:scale(0.96); filter:drop-shadow(0 0 4px var(--trigger)); }
+    50%{ opacity:.75; transform:scale(1); filter:none; }
+    90%{ opacity:.75; transform:scale(1); }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .key{ animation:keyPress var(--cycle) infinite linear; transform-box:fill-box; transform-origin:center; }
+
+  /* ---- LLM: idle, then a visible "thinking" beat, then streams ---- */
+  @keyframes llmThink{
+    0%,43%{ opacity:.3; transform:scale(1); filter:none; }
+    45%{ opacity:1; transform:scale(1.3); filter:drop-shadow(0 0 8px var(--llm)); }
+    48%{ opacity:.6; transform:scale(1.05); filter:none; }
+    50%{ opacity:1; transform:scale(1.3); filter:drop-shadow(0 0 8px var(--llm)); }
+    53%{ opacity:.8; transform:scale(1); filter:none; }
+    80%{ opacity:.8; transform:scale(1); }
+    90%{ opacity:.5; }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .llm-dot{ animation:llmThink var(--cycle) infinite linear; transform-box:fill-box; transform-origin:center; }
+
+  /* ---- streamed response tokens: appear, immediately feed TTS, then dim once "spoken" ---- */
+  @keyframes token1{
+    0%,51%{ opacity:0; fill:var(--llm); }
+    53%{ opacity:1; fill:var(--llm); }
+    58%{ fill:var(--llm-dim); }
+    90%{ opacity:1; fill:var(--llm-dim); }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes token2{
+    0%,58%{ opacity:0; fill:var(--llm); }
+    60%{ opacity:1; fill:var(--llm); }
+    65%{ fill:var(--llm-dim); }
+    90%{ opacity:1; fill:var(--llm-dim); }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes token3{
+    0%,69%{ opacity:0; fill:var(--llm); }
+    71%{ opacity:1; fill:var(--llm); }
+    76%{ fill:var(--llm-dim); }
+    90%{ opacity:1; fill:var(--llm-dim); }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .token-1{ animation:token1 var(--cycle) infinite linear; }
+  .token-2{ animation:token2 var(--cycle) infinite linear; }
+  .token-3{ animation:token3 var(--cycle) infinite linear; }
+
+  /* ---- output waveform, grown directly off each token, no gap ---- */
+  @keyframes outG1{
+    0%,52%{ opacity:0; }
+    54%{ opacity:1; }
+    90%{ opacity:1; }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes outG2{
+    0%,59%{ opacity:0; }
+    61%{ opacity:1; }
+    90%{ opacity:1; }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @keyframes outG3{
+    0%,70%{ opacity:0; }
+    72%{ opacity:1; }
+    90%{ opacity:1; }
+    94%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  .out-g1{ animation:outG1 var(--cycle) infinite linear; fill:var(--audio-out); }
+  .out-g2{ animation:outG2 var(--cycle) infinite linear; fill:var(--audio-out); }
+  .out-g3{ animation:outG3 var(--cycle) infinite linear; fill:var(--audio-out); }
+
+  @media (prefers-reduced-motion: reduce){
+    .bar-g1,.bar-g2,.bar-g3{ animation:none; opacity:1; fill:var(--audio-in-dim); }
+    .tick-1,.tick-2,.tick-3{ animation:none; opacity:0; }
+    .stt-dot{ animation:none; opacity:1; transform:scale(1); }
+    .chunk-1,.chunk-2,.chunk-3{ animation:none; opacity:1; transform:none; }
+    .transcript{ animation:none; fill:var(--stt-text-dim); }
+    .key{ animation:none; opacity:.75; transform:none; filter:none; }
+    .llm-dot{ animation:none; opacity:.8; transform:none; filter:none; }
+    .token-1,.token-2,.token-3{ animation:none; opacity:1; fill:var(--llm-dim); }
+    .out-g1,.out-g2,.out-g3{ animation:none; opacity:1; }
+  }
+</style>
+
+<div class="stage">
+  <p class="eyebrow">voice pipeline · two triggers, not one</p>
+
+  <figure>
+    <svg viewBox="0 0 1600 350" role="img" aria-label="Diagram of a voice pipeline: a spoken phrase is captured as audio, voice activity detection fires three times to automatically pick up chunks for speech-to-text as the user keeps talking, then a separate deliberate trigger sends the finished transcript to the LLM, whose streamed response tokens are converted directly into spoken output with no gap.">
+
+      <line x1="60" y1="230" x2="1540" y2="230" stroke="var(--grid)" stroke-width="1"/>
+
+      <text x="76" y="34" class="label-corner">YOU</text>
+      <text x="1524" y="34" class="label-corner" text-anchor="end">ASSISTANT</text>
+
+      <!-- input waveform: group 1 -->
+      <g>
+        <rect class="bar bar-g1" x="72" y="222" width="8" height="16" rx="3" style="animation-delay:0s"/>
+        <rect class="bar bar-g1" x="86" y="208" width="8" height="44" rx="3" style="animation-delay:.02s"/>
+        <rect class="bar bar-g1" x="101" y="190" width="8" height="80" rx="3" style="animation-delay:.04s"/>
+        <rect class="bar bar-g1" x="115" y="213" width="8" height="34" rx="3" style="animation-delay:.06s"/>
+        <rect class="bar bar-g1" x="129" y="182" width="8" height="96" rx="3" style="animation-delay:.08s"/>
+        <rect class="bar bar-g1" x="144" y="199" width="8" height="62" rx="3" style="animation-delay:.10s"/>
+        <rect class="bar bar-g1" x="158" y="217" width="8" height="26" rx="3" style="animation-delay:.12s"/>
+        <rect class="bar bar-g1" x="172" y="178" width="8" height="104" rx="3" style="animation-delay:.14s"/>
+      </g>
+
+      <line class="tick-1" x1="183" y1="196" x2="183" y2="264" stroke="var(--vad-tick)" stroke-width="4" stroke-linecap="round"/>
+
+      <!-- input waveform: group 2 -->
+      <g>
+        <rect class="bar bar-g2" x="186" y="210" width="8" height="40" rx="3" style="animation-delay:0s"/>
+        <rect class="bar bar-g2" x="201" y="192" width="8" height="76" rx="3" style="animation-delay:.02s"/>
+        <rect class="bar bar-g2" x="215" y="180" width="8" height="100" rx="3" style="animation-delay:.04s"/>
+        <rect class="bar bar-g2" x="229" y="216" width="8" height="28" rx="3" style="animation-delay:.06s"/>
+        <rect class="bar bar-g2" x="244" y="200" width="8" height="60" rx="3" style="animation-delay:.08s"/>
+        <rect class="bar bar-g2" x="258" y="213" width="8" height="34" rx="3" style="animation-delay:.10s"/>
+        <rect class="bar bar-g2" x="272" y="205" width="8" height="50" rx="3" style="animation-delay:.12s"/>
+        <rect class="bar bar-g2" x="286" y="185" width="8" height="90" rx="3" style="animation-delay:.14s"/>
+      </g>
+
+      <line class="tick-2" x1="298" y1="196" x2="298" y2="264" stroke="var(--vad-tick)" stroke-width="4" stroke-linecap="round"/>
+
+      <!-- input waveform: group 3 -->
+      <g>
+        <rect class="bar bar-g3" x="301" y="215" width="8" height="30" rx="3" style="animation-delay:0s"/>
+        <rect class="bar bar-g3" x="315" y="195" width="8" height="70" rx="3" style="animation-delay:.02s"/>
+        <rect class="bar bar-g3" x="329" y="178" width="8" height="104" rx="3" style="animation-delay:.04s"/>
+        <rect class="bar bar-g3" x="344" y="209" width="8" height="42" rx="3" style="animation-delay:.06s"/>
+        <rect class="bar bar-g3" x="358" y="222" width="8" height="16" rx="3" style="animation-delay:.08s"/>
+        <rect class="bar bar-g3" x="372" y="198" width="8" height="64" rx="3" style="animation-delay:.10s"/>
+        <rect class="bar bar-g3" x="386" y="213" width="8" height="34" rx="3" style="animation-delay:.12s"/>
+        <rect class="bar bar-g3" x="400" y="224" width="8" height="12" rx="3" style="animation-delay:.14s"/>
+      </g>
+
+      <line class="tick-3" x1="413" y1="196" x2="413" y2="264" stroke="var(--vad-tick)" stroke-width="4" stroke-linecap="round"/>
+
+      <!-- STT -->
+      <circle class="stt-dot" cx="452" cy="230" r="9" fill="var(--stt-text)"/>
+      <g class="transcript">
+        <text class="chunk-1" x="490" y="164" font-size="24">turn </text>
+        <text class="chunk-2" x="556" y="164" font-size="24">off the </text>
+        <text class="chunk-3" x="662" y="164" font-size="24">lights</text>
+      </g>
+
+      <!-- explicit SEND trigger -->
+      <g class="key">
+        <rect x="864" y="212" width="40" height="26" rx="6" fill="none" stroke="var(--trigger)" stroke-width="2.5"/>
+        <line x1="884" y1="230" x2="884" y2="220" stroke="var(--trigger)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="877" y1="225" x2="884" y2="218" stroke="var(--trigger)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="891" y1="225" x2="884" y2="218" stroke="var(--trigger)" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- LLM -->
+      <circle class="llm-dot" cx="990" cy="230" r="10" fill="var(--llm)"/>
+      <text class="token-1" x="1024" y="164" font-size="22">Lights</text>
+      <text class="token-2" x="1102" y="164" font-size="22"> off</text>
+      <text class="token-3" x="1154" y="164" font-size="22">.</text>
+
+      <!-- output waveform: group 1 -->
+      <g>
+        <rect class="bar out-g1" x="1178" y="216" width="10" height="28" rx="3"/>
+        <rect class="bar out-g1" x="1198" y="200" width="10" height="60" rx="3"/>
+        <rect class="bar out-g1" x="1218" y="184" width="10" height="92" rx="3"/>
+        <rect class="bar out-g1" x="1238" y="212" width="10" height="36" rx="3"/>
+        <rect class="bar out-g1" x="1258" y="194" width="10" height="72" rx="3"/>
+        <rect class="bar out-g1" x="1278" y="218" width="10" height="24" rx="3"/>
+      </g>
+
+      <!-- output waveform: group 2 -->
+      <g>
+        <rect class="bar out-g2" x="1298" y="208" width="10" height="44" rx="3"/>
+        <rect class="bar out-g2" x="1318" y="182" width="10" height="96" rx="3"/>
+        <rect class="bar out-g2" x="1338" y="200" width="10" height="60" rx="3"/>
+        <rect class="bar out-g2" x="1358" y="174" width="10" height="112" rx="3"/>
+        <rect class="bar out-g2" x="1378" y="212" width="10" height="36" rx="3"/>
+        <rect class="bar out-g2" x="1398" y="222" width="10" height="16" rx="3"/>
+      </g>
+
+      <!-- output waveform: group 3 -->
+      <g>
+        <rect class="bar out-g3" x="1418" y="214" width="10" height="32" rx="3"/>
+        <rect class="bar out-g3" x="1438" y="196" width="10" height="68" rx="3"/>
+        <rect class="bar out-g3" x="1458" y="178" width="10" height="104" rx="3"/>
+        <rect class="bar out-g3" x="1478" y="210" width="10" height="40" rx="3"/>
+        <rect class="bar out-g3" x="1498" y="198" width="10" height="64" rx="3"/>
+        <rect class="bar out-g3" x="1518" y="220" width="10" height="20" rx="3"/>
+      </g>
+
+      <!-- stage labels -->
+      <text x="298" y="300" class="label-stage" text-anchor="middle">VAD</text>
+      <text x="298" y="317" class="label-sub" text-anchor="middle">auto · every pause</text>
+
+      <text x="600" y="300" class="label-stage" text-anchor="middle">STT</text>
+      <text x="600" y="317" class="label-sub" text-anchor="middle">auto · per chunk</text>
+
+      <text x="884" y="300" class="label-stage" text-anchor="middle" fill="var(--trigger)">SEND</text>
+      <text x="884" y="317" class="label-sub trig" text-anchor="middle">manual</text>
+
+      <text x="1060" y="300" class="label-stage" text-anchor="middle">LLM</text>
+      <text x="1060" y="317" class="label-sub" text-anchor="middle">streamed</text>
+
+      <text x="1350" y="300" class="label-stage" text-anchor="middle">TTS</text>
+      <text x="1350" y="317" class="label-sub" text-anchor="middle">streamed</text>
+
+    </svg>
+    <figcaption>VAD picks up every pause automatically. Sending it to the <b>LLM is a decision</b>, not a timer.</figcaption>
+  </figure>
+</div>
