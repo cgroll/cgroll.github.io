@@ -24,8 +24,6 @@ publicly available, and even visualizations come with a link to the
 link](https://github.com/worldbank/sdgatlas2018/blob/master/sdg10.R#L360-L385)
 to the source code of the first chart below).
 
-<br>
-
 From the extensive full collection of charts let me showcase five
 examples that I found particularly revealing. The first two charts
 address the still ridiculously high transaction costs that are
@@ -67,6 +65,4 @@ this is the rise in life expectancy in almost all parts of the world
 (Africa sadly seems to lack behind).
 
 ![Life expectancy](/assets/images/sdg_atlas_2018_life_expectancy.png) 
-
-
 

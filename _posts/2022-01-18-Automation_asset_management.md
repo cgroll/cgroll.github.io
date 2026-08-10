@@ -22,8 +22,6 @@ transcript into English using
 [DeepL](https://www.deepl.com/translator) (and didn't further modify
 the output).
 
-<br>
-
 You can find further info on the [episode's
 page](https://de.scalable.capital/money-market-and-machines/mmm-automatisierte-geldanlage-mit-dr-christian-groll)
 of the Money, Markets and Machines Podcast of Scalable Capital.
@@ -36,10 +34,7 @@ We talked about:
 - pecularities of financial data
 - alternative data sources for asset management
 
-
 You can find the German transcript [here](/2022/01/Automation_asset_management/mmm_german_podcast_transcript.html):
-
-<br>
 
 <audio controls="" volume="0.5" style="width: 100%">
   <source src="https://downloads.ctfassets.net/kcbf79ije7q7/4cdKLOcWruYPdSMOzBpD0g/ea420096d9315e7e351643321e795868/SC_VV_Podcast_3_Automatisierte_Geldanlage_fixed.mp3">
@@ -50,7 +45,6 @@ Your browser does not support the audio element.
 
 <p>0:00:09 - 0:00:30: Tobias
 </p>
-<br>
 
 <p> Good afternoon, welcome again to the Scalable Capital Podcast. I
 am Tobias Aigner and today I would like to take you into the world of
@@ -62,30 +56,24 @@ Scalable's Head of Quantitative Investment Strategy, and he's sitting
 here with me today. Hello Christian, good to have you here.
 
 </p>
-<br>
 
 <p>0:00:30 - 0:00:31: Christian
 </p>
-<br>
 
 <p>
 Hi. 
 </p>
-<br>
 
 <p>0:00:31 - 0:00:50: Tobias
 </p>
-<br>
 
 <p> Christian, maybe you could first tell us a little bit about
 yourself. How did you come to Scalable and what exactly do you do
 here?
 
 </p>
-<br>
 <p>0:00:50 - 0:01:56: Christian
 </p>
-<br>
 
 <p> Yes, very much so. I studied business mathematics in Munich and
 then did my doctorate in statistics at the chair of Professor Stefan
@@ -103,21 +91,16 @@ world. We also have a quant blog, where we are gradually describing
 components of the algorithm and working through financial market
 topics that are relevant for modeling.
 
-
 </p>
-<br>
 <p>0:01:58 - 0:02:04: Tobias
 </p>
-<br>
 
 <p> Let's get into the topic. How would you describe the describe
 Scalable Capital's investment model?
 
 </p>
-<br>
 <p>0:02:05 - 0:02:38: Christian
 </p>
-<br>
 
 <p> Yes, I would say the main pillars of the model are a global and
 across multiple asset classes, diversified investment universe with
@@ -127,22 +110,16 @@ adjustment, and importantly also, yes I would say, a strong belief
 that any investment decisions should be based on as solid empirical
 data as possible.
 
-
 </p>
-<br>
 <p>0:02:38 - 0:02:46: Tobias
 </p>
-<br>
 
 <p> And when you say automated, does that mean that the computer
 really makes the decisions itself? Can you say that?
 
-
 </p>
-<br>
 <p>0:02:46 - 0:05:40: Christian
 </p>
-<br>
 
 <p> Yes, I think I'll have to elaborate a bit more on that first. Not
 all automation is the same. There are extreme differences in what can
@@ -186,22 +163,16 @@ available. Someone has to classify the five million strings to
 determine whether they are valid e-mail addresses or not. valid e-mail
 address or not.
 
-
 </p>
-<br>
 <p>0:05:41 - 0:05:47: Tobias
 </p>
-<br>
 
 <p> So both variants outlined. The exciting question now is, of
 course, which one is better or which one should be preferred?
 
-
 </p>
-<br>
 <p>0:05:48 - 0:07:57: Christian
 </p>
-<br>
 
 <p> Yes, before we think about that, let's talk briefly about the
 potential weaknesses of the two approaches. Sure, in the traditional
@@ -234,24 +205,17 @@ first, because the classification on the sample data set was correct.
 But when applying it to new data, you will soon realize that the wrong
 rules were learned in the background.
 
-
-
 </p>
-<br>
 <p>0:07:58 - 0:08:07: Tobias
 </p>
-<br>
 
 <p> The bottom line is that which approach is better is decided by
 whether you trust the computer's rules or the expert's rules more,
 right? 
 
-
 </p>
-<br>
 <p>0:08:07 - 0:09:55: Christian
 </p>
-<br>
 
 <p> Yes, you could formulate it like that in general or now translated
 specifically only to the rules of the computer. The trustworthiness
@@ -281,20 +245,15 @@ certainly one of the greatest challenges in the application of
 artificial intelligence.
 
 </p>
-<br>
 <p>0:09:55 - 0:10:02: Tobias
 </p>
-<br>
 
 <p> Let's take a look at the algorithm of scalable. To what extent
 does artificial artificial intelligence really play a role?
 
-
 </p>
-<br>
 <p>0:10:02 - 0:11:22: Christian
 </p>
-<br>
 
 <p> Yes, so far we have only dealt with rather extreme examples of
 algorithms in order to hopefully make it more or less understandable
@@ -315,12 +274,9 @@ finance, this would mean, for example, that I would tell the algorithm
 how best to calculate risk. But you could still let it learn how best
 to handle this information.
 
-
 </p>
-<br>
 <p>0:11:23 - 0:11:53: Tobias
 </p>
-<br>
 
 <p> Scalable's dynamic risk management is designed to determine the
 risk in the portfolio and then derive decisions for action from that.
@@ -332,10 +288,8 @@ as receiving part of the rules from you and working out the other part
 by itself? Can you put it that way?
 
 </p>
-<br>
 <p>0:11:53 - 0:15:14: Christian
 </p>
-<br>
 
 <p> Yes, here again I would say that there are very many different
 gradations as to how much leeway I could leave to the computer itself
@@ -382,22 +336,16 @@ objectives. Overall, however, I think that in the world of finance in
 particular, you have to be extremely careful about where you leave the
 computer and how much leeway you leave it to determine its own rules.
 
-
 </p>
-<br>
 <p>0:15:14 - 0:15:22: Tobias
 </p>
-<br>
 
 <p> You just said in the financial world, what do you mean, how is the
 financial world different from other areas?
 
-
 </p>
-<br>
 <p>0:15:22 - 0:18:58: Christian
 </p>
-<br>
 
 <p> I would say, well, the signal-to-noise ratio, that is, the ratio
 of relevant patterns in the data to simple, random patterns that are
@@ -449,24 +397,17 @@ algorithm gets too good at recognizing cats. That's why machine
 learning and artificial intelligence play a bigger role in image
 recognition than in the adaptive financial market.
 
-
-
 </p>
-<br>
 <p>0:18:58 - 0:19:07: Tobias
 </p>
-<br>
 
 <p> Okay, but the bottom line then is that in the financial world, you
 should just rely much more on predetermined rules and not give the
 computer too much leeway.
 
-
 </p>
-<br>
 <p>0:19:07 - 0:20:46: Christian
 </p>
-<br>
 
 <p> Yes, I do think that empirical studies currently still tend to
 indicate that less leeway for the computer is definitely advisable. In
@@ -493,10 +434,8 @@ Of course, this automatically excludes a bit of comparison with
 existing economic theory.
 
 </p>
-<br>
 <p>0:20:47 - 0:21:14: Tobias
 </p>
-<br>
 
 <p> Now we have talked a lot about novel algorithms. What I'm also
 interested in now, what is known, are, for example, new types of data
@@ -506,12 +445,9 @@ Social media comments, smartphone geolocation data to figure out
 consumer behavior. Internet search engine data, all that stuff. What
 do you think about that?
 
-
 </p>
-<br>
 <p>0:21:14 - 0:21:46: Christian
 </p>
-<br>
 
 <p> Yes, the question fits perfectly here. I can answer about the same
 thing again right away. Here, too, my first hint would always be, yes,
@@ -523,20 +459,14 @@ data sources only over a very limited period of time back into the
 past, then the rules and the resulting benefit can of course only be
 empirically tested to a very limited extent.
 
-
 </p>
-<br>
 <p>0:21:47 - 0:21:49: Tobias
 </p>
-<br>
 <p> Why is this so dangerous or what does it lead to?
 
-
 </p>
-<br>
 <p>0:21:50 - 0:23:52: Christian
 </p>
-<br>
 
 <p> Well, the full risk profile of an investment strategy can only be
 guessed at once it has been observed over at least one full economic
@@ -568,21 +498,16 @@ benefits of innovative data sources cannot be transferred to other
 financial market environments in the same way.
 
 </p>
-<br>
 <p>0:23:52 - 0:24:03: Tobias
 </p>
-<br>
 
 <p> Finally, after all the algorithms, let's come back to the topic of
 people, namely the portfolio manager when investing. What makes a good
 portfolio manager for you?
 
-
 </p>
-<br>
 <p>0:24:04 - 0:25:24: Christian
 </p>
-<br>
 
 <p> Humility and the honesty to analyze past decisions relentlessly.
 In my opinion, every successful investment strategy requires two
@@ -604,41 +529,31 @@ historical data, you get the probability of misjudgements in black and
 white, so to speak. In my opinion, this is the best means against
 overestimating oneself.
 
-
 </p>
-<br>
 <p>0:25:24 - 0:25:37: Tobias
 </p>
-<br>
 
 <p> Very interesting, so I humbly say, thank you very much for the interview, Christian.
 
 </p>
-<br>
 <p>0:25:37 - 0:25:39: Christian
 </p>
-<br>
 
 <p>
 Thank you too.
 
 </p>
-<br>
 <p>0:25:39 - 0:25:47: Tobias
 </p>
-<br>
 
 <p> This was our podcast episode on the topic of automation in
 investment. If you would like more information on this, you can find
 it on our website or send us an email at podcast@scalable.capital.
 Thank you very much for listening.
 
-
 </p>
-<br>
 <p>0:25:52 - 0:26:18: Risk Disclaimer
 </p>
-<br>
 
 <p> Scalable Capital Vermögensverwaltung GmbH, does not provide
 investment, legal or tax advice. Should this podcast contain
@@ -648,4 +563,3 @@ solely to explain the services provided. The capital investment is
 associated with risks. Please refer to the information on our website.
 
 </p>
-<br>

@@ -18,8 +18,6 @@ page](https://www.blackrock.com/investing/investment-ideas/advantage),
 however, where you can download an Advantage Series guide after
 login). 
 
-<br>
-
 According to the German webpage, the Advantage Series is combining
 "technology, big data analysis and responsible investing" in the form
 of a systematic investment approach. The idea behind the investment
@@ -27,8 +25,6 @@ approach is to infer profound and timely insights into financial
 markets and individual companies through the use of new and innovative
 data sources that go beyond traditional financial data. Some examples
 mentioned on the webpage are:
-
-<br>
 
 - thousands of investor blog posts that could reveal
   insights into current and future perspectives of individual
@@ -41,14 +37,10 @@ mentioned on the webpage are:
 - booking data that shows trends in traveling and helps to forecast
   future revenues
 
-<br>
-
 And as additional icing on the cake, even social and ecological
 footprints of companies are taken into account, where controversial
 weapon companies or any companies that violate the principles of the
 UN Global Compact are excluded.
-
-<br>
 
 Sounds pretty much like the future of investing has already arrived,
 right? Well, I definitely support a data driven and systematic

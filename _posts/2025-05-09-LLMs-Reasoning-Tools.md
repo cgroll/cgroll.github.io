@@ -14,11 +14,7 @@ Stell dir vor, du hättest einen super-intelligenten Assistenten, der menschenä
 
 Manchmal liefert die direkte Befragung eines LLMs zu einer komplexen Frage nicht das beste Ergebnis. Es ist, als würde man jemanden bitten, eine komplizierte mathematische Aufgabe im Kopf zu lösen, ohne einen richtigen Lösungsansatz zu verwenden. Die "Chain of Thought" (CoT) Technik ermutigt das LLM, das Problem in kleinere, logische Schritte zu zerlegen und seine Überlegungen dabei zu erläutern. Dies führt oft zu genaueren Antworten und schafft zusätzliche Transparenz.
 
-<br>
-
 **Beispiel, ohne chain of thought**
-
-<br>
 
 *Nutzer:* Schreibe eine Python-Funktion, um zu überprüfen, ob eine gegebene Zeichenkette ein Palindrom ist.
 
@@ -30,10 +26,7 @@ def ist_palindrom(s):
 
 Obwohl die Funktion für einfache Fälle richtige Ausgaben macht, ist sie insbesondere für Fälle mit Berücksichtigung von Groß- und Kleinschreibung nicht korrekt. Außerdem gibt sie keinerlei Einblicke in den Denkprozess zur besseren Nachvollziehbarkeit der Lösung.
 
-<br>
 **Beispiel, mit chain of thought**
-
-<br>
 
 *Nutzer:* Schreibe eine Python-Funktion, um zu überprüfen, ob eine gegebene Zeichenkette ein Palindrom ist. Erkläre deine Schritte.
 
@@ -56,21 +49,13 @@ def ist_palindrom(text):
 
 Hier sieht man, wie der CoT-Ansatz nicht nur den Code liefert, sondern auch die Begründung für jeden Schritt erklärt, wodurch die Lösung verständlicher und robuster wird.
 
-<br>
-
 ## Verkettungen von LLM-Aufrufen (Chaining)
 
 Oft reicht ein einzelner LLM-Aufruf nicht aus, um ein vielschichtiges Problem zu lösen. Wir müssen möglicherweise eine größere Aufgabe in eine Abfolge kleinerer, miteinander verbundener Schritte zerlegen und die Ausgabe eines LLM-Aufrufs als Eingabe für den nächsten verwenden. Das ist die Idee hinter "Chains".
 
-<br>
-
 **Beispiel: Von Stichpunkten zum mehrsprachigen LinkedIn-Post**
 
-<br>
-
 **Schritt 1:** Vom Stichpunkt zur Textausformulierung (LLM-Aufruf 1): Der Nutzer gibt Stichpunkte für einen LinkedIn-Post ein. Das LLM formuliert daraus einen zusammenhängenden Text.
-
-<br>
 
 *Nutzer-Eingabe:*
 ```
@@ -80,47 +65,29 @@ Oft reicht ein einzelner LLM-Aufruf nicht aus, um ein vielschichtiges Problem zu
 - Mehr dazu im Blog (Link folgt)
 ```
 
-<br>
-
 *LLM-Ausgabe 1:*
 
 "Wir freuen uns, die Veröffentlichung eines brandneuen Features bekannt zu geben! Dieses Update wurde entwickelt, um Ihre Nutzererfahrung deutlich zu verbessern. Erste Tests zeigen eine Steigerung der Produktivität um beeindruckende 15%. Erfahren Sie alle Details in unserem neuesten Blogbeitrag (Link folgt)."
 
-<br>
-
 **Schritt 2:** Anpassung für LinkedIn (LLM-Aufruf 2): Der generierte Text wird für die LinkedIn-Plattform optimiert (z.B. Hinzufügen von relevanten Hashtags, prägnantere Formulierungen).
-
-<br>
 
 *LLM-Ausgabe 2:*
 
 "🚀 Spannende Neuigkeiten! Wir haben gerade ein brandneues Feature gelauncht, das eure Nutzererfahrung auf ein neues Level hebt und die Produktivität um 15% steigert! 🔥 Neugierig? Alle Infos gibt's im Blog: [Link folgt] #innovation #produktivität #userexperience #software #update"
 
-<br>
-
 **Schritt 3:** Übersetzung ins Englische (LLM-Aufruf 3): Der für LinkedIn optimierte Text wird ins Englische übersetzt.
-
-<br>
 
 LLM-Ausgabe 3:
 
 "🚀 Exciting news! We've just launched a brand-new feature designed to elevate your user experience and boost productivity by 15%! 🔥 Curious? Find all the details on our blog: [Link follows] #innovation #productivity #userexperience #software #update"
 
-<br>
-
 ![LLM Chain diagram](/assets/images/llm_tools_reasoning_chain_1.png)
 
 ## Jenseits von Text: LLMs mit Werkzeugen befähigen
 
-<br>
-
 LLMs sind leistungsstarke Textverarbeiter, aber ihre Fähigkeiten erweitern sich dramatisch, wenn sie über "Werkzeuge" mit der Außenwelt interagieren können. Man kann sich Werkzeuge als externe Funktionen oder Dienste vorstellen, die das LLM nutzen kann, um Informationen zu sammeln, Aktionen auszuführen oder mit Systemen zu interagieren.
 
-<br>
-
 **Wie funktioniert Tool Usage?**
-
-<br>
 
 - **Werkzeugbeschreibung:** Jedes Werkzeug hat eine Beschreibung, die dem LLM mitteilt, was es tut, welche Parameter es benötigt und welche Ausgabe es erwartet.
 - **Werkzeugaufruf:** Wenn das LLM feststellt, dass ein Werkzeug benötigt wird, um eine Nutzeranfrage zu erfüllen, generiert es einen "Tool Call". Dieser Aufruf spezifiziert, welches Werkzeug verwendet werden soll und welche Werte für seine Parameter gelten.
@@ -128,19 +95,11 @@ LLMs sind leistungsstarke Textverarbeiter, aber ihre Fähigkeiten erweitern sich
 - **Ergebnisverständnis:** Der Orchestrierungslayer speist das Ergebnis des Werkzeugs zurück an das LLM.
 - **Finale Ausgabe:** Das LLM versteht das Ergebnis des Werkzeugs und verwendet es, um eine abschließende, umfassende Antwort an den Nutzer zu generieren.
 
-<br>
-
 **Werkzeuge können "side effects" haben:**
-
-<br>
 
 Es ist wichtig zu beachten, dass Werkzeuge nicht nur zum Abrufen von Informationen dienen. Sie können auch Aktionen ausführen, die "side effects" haben, d.h. den Zustand eines Systems verändern.
 
-<br>
-
 **Beispiel: Tool Usage mit Wetterabfrage per JSON**
-
-<br>
 
 Folgender System Prompt (nur ein Auszug) zeigt, wie einem LLM die Verwendung eines Werkzeuges per Instruktion beigebracht werden kann:
 
@@ -168,23 +127,15 @@ Antworte dem Nutzer immer in der Sprache des Nutzers. Nutze das Tool, wenn die A
 
 **Beispielhafter Ablauf:**
 
-<br>
-
 **1. Nutzer-Anfrage:** "Wie ist das Wetter in München?"
 
-<br>
-
 **2. LLM-Analyse:** Das LLM erkennt die Anfrage nach Wetterinformationen für "München".
-
-<br>
 
 **3. Tool-Aufruf (JSON):** Das LLM generiert einen Tool-Aufruf im JSON-Format:
 
 ```
 {"tool_name": "get_weather", "parameters": {"location": "München"}}
 ```
-
-<br>
 
 **4. Orchestrierungsebene:**
 
@@ -194,27 +145,17 @@ Antworte dem Nutzer immer in der Sprache des Nutzers. Nutze das Tool, wenn die A
 - Er empfängt die Antwort vom Wetterdienst (z.B. im JSON-Format mit Temperatur, Windgeschwindigkeit etc.).
 - Er gibt das Ergebnis der Wetter-API zurück an das LLM.
 
-<br>
-
 **5. LLM-Antwort:** Das LLM verarbeitet das Ergebnis der Wetter-API und generiert eine Antwort für den Nutzer in deutscher Sprache:
-
-<br>
 
 "Das Wetter in München ist aktuell 15 Grad Celsius, mit leichtem Wind." (basierend auf der Antwort der Wetter-API).
 
-<br>
-
 Das folgende Diagramm veranschaulicht diesen Ablauf:
-
-<br>
 
 ![Sequence diagram](/assets/images/llm_tools_reasoning_react_2.png)
 
 ### Weitere mögliche Tools
 
 Die Palette an möglichen Tools für LLMs ist breit gefächert. Hier einige Beispiele:
-
-<br>
 
 - **Code-Interpreter:** Ermöglicht das Ausführen von Code (z.B. Python, JavaScript) direkt durch das LLM, um Ergebnisse zu verifizieren oder dynamische Inhalte zu generieren.
 - **Dateisystem-Interaktion:** Tools zum Lesen und Schreiben von Dateien, nützlich für die Bearbeitung von Konfigurationsdateien, Protokollen etc.
@@ -224,15 +165,9 @@ Die Palette an möglichen Tools für LLMs ist breit gefächert. Hier einige Beis
 - **Planungs- und Projektmanagement-Tools:** Tools zum Erstellen und Verwalten von Aufgaben, Zuweisen von Verantwortlichkeiten etc.
 - **Visualisierungstools:** Tools zur Erstellung von Diagrammen oder anderen visuellen Darstellungen von Daten oder Strukturen (bspw. mittels Mermaid.js).
 
-<br>
-
 ## Intelligente und Nicht-Deterministische Lösungspfade
 
-<br>
-
 Moderne LLM-basierte Anwendungen entwickeln sich über einfache, lineare Aufgabenabfolgen hinaus. Um komplexere Probleme zu lösen und flexibler auf Nutzeranfragen reagieren zu können, werden Mechanismen für intelligente und nicht-deterministische Lösungspfade implementiert. Das bedeutet, dass der genaue Ablauf der Informationsverarbeitung und Werkzeugnutzung nicht starr vorgegeben ist, sondern sich dynamisch an die jeweilige Situation anpasst. Im Folgenden betrachten wir den Agenten "KnowledgeAssistant", der zur Informationsbeschaffung dient und über folgende Werkzeuge verfügt:
-
-<br>
 
 - **search_internal_knowledge_base:** Durchsucht interne Firmendokumente (z.B. Richtlinien, Projektdokumentationen).
 - **search_public_internet:** Findet öffentliche Nachrichten, allgemeine Informationen und externe Daten.
@@ -240,12 +175,9 @@ Moderne LLM-basierte Anwendungen entwickeln sich über einfache, lineare Aufgabe
 
 Zwei Kernkonzepte für solche intelligenten Pfade sind die situationsabhängige Auswahl von Werkzeugen (Routing) und die iterative Verbesserung durch Selbstreflexion.
 
-
 ### Intelligente Pfadauswahl durch Tool-Routing
 
 Beim Tool-Routing analysiert der Agent die Nutzeranfrage und entscheidet, welches seiner verfügbaren Werkzeuge oder welcher vordefinierte Unterprozess am besten geeignet ist, um die Anfrage zu beantworten. Dies führt zu einer Verzweigung im Lösungspfad.
-
-<br>
 
 **Beispiel A:** Interne Information benötigt
 
@@ -253,32 +185,21 @@ Beim Tool-Routing analysiert der Agent die Nutzeranfrage und entscheidet, welche
 - **Gedankengang des Agenten:** Die Schlüsselwörter "unsere" und "Unternehmensrichtlinie" deuten klar auf ein internes Dokument hin.
 - **Resultierender Pfad/Aktion:** Der Agent wählt das Werkzeug search_internal_knowledge_base und sucht mit relevanten Stichwörtern nach der entsprechenden Richtlinie.
 
-<br>
-
 **Beispiel B:** Öffentliche Information benötigt
 
 - **Nutzeranfrage:** "Was sind die neuesten Nachrichten und Produktankündigungen von ‘FutureGadgets Inc.’?"
 - **Gedankengang des Agenten:** "Neueste Nachrichten" und "Produktankündigungen" eines externen Unternehmens erfordern eine Recherche im öffentlichen Raum.
 - **Resultierender Pfad/Aktion:** Der Agent wählt das Werkzeug search_public_internet und formuliert eine Suchanfrage, um aktuelle Informationen über ‘FutureGadgets Inc.’ zu finden.
 
-<br>
-
 In diesen Fällen wählt der Agent basierend auf der initialen Analyse einen von mehreren möglichen Pfaden.
 
-<br>
-
 ![Routing](/assets/images/llm_tools_reasoning_routing_3.png)
-
 
 ### Selbstreflexion für iterative Lösungsfindung
 
 Selbstreflexion ermöglicht es dem Agenten, die Ergebnisse seiner Aktionen zu bewerten und seinen Plan bei Bedarf anzupassen. Wenn eine erste Aktion nicht zum gewünschten Ergebnis führt, kann der Agent seine Strategie ändern und es erneut versuchen. Die Anzahl der Iterationen ist dabei nicht vorbestimmt.
 
-<br>
-
 **Beispiel:** Iterative Informationssuche mit Qualitätsprüfung
-
-<br>
 
 - **Nutzeranfrage:** "Ich suche spezifische technische Studien zur Effizienzsteigerung durch Robotik in der Intralogistik, publiziert nach 2022."
 - **Gedankengang/Prozess des Agenten:**
@@ -288,22 +209,13 @@ Selbstreflexion ermöglicht es dem Agenten, die Ergebnisse seiner Aktionen zu be
   - **Versuch 2 (Beobachtung & Selbstreflexion):** Die Ergebnisse sind nun deutlich relevanter und spezifischer. Der Agent befindet sie als ausreichend für die Beantwortung der Anfrage. (Falls nicht, könnte eine weitere Iteration folgen).
 - **Resultierender Pfad/Aktion(en):** Eine variable Anzahl von Aufrufen des Werkzeugs search_public_internet, wobei jede Suchanfrage auf den Erkenntnissen der vorherigen Iteration basiert.
 
-<br>
-
 ![Reflection](/assets/images/llm_tools_reasoning_reflection_4.png)
 
-<br>
-
 Durch diese Mechanismen können LLM-basierte Systeme flexibler und "intelligenter" agieren. Sie wählen nicht nur situationsgerecht Werkzeuge aus, sondern können auch ihre eigenen Strategien anpassen, um auch bei komplexen oder unklar formulierten Anfragen zu besseren Ergebnissen zu gelangen. Der Lösungsweg ist somit nicht starr, sondern passt sich dynamisch den Erfordernissen an.
-
-<br>
-
 
 ## Alternative Tool Frameworks und Model Context Protocol (MCP)
 
 LLM-Anwendungen nutzen oft Ketten von Verarbeitungsschritten, in denen das LLM mit externen Werkzeugen und Diensten interagiert. Während JSON-basierte Tools hierfür üblich sind, können die einzelnen Komponenten in solchen Abläufen deutlich vielfältiger sein und über einfache, durch JSON definierte API-Aufrufe hinausgehen.
-
-<br>
 
 ### Die Bandbreite der Komponenten in Verarbeitungsketten
 
@@ -316,55 +228,33 @@ LLM-Anwendungen nutzen oft Ketten von Verarbeitungsschritten, in denen das LLM m
 3.  **JSON-basierte Werkzeuge:**
     Natürlich bleiben auch die bewährten JSON-basierten Werkzeugaufrufe wichtig, besonders für die Anbindung an klar definierte externe APIs.
 
-<br>
-
 Diese Vielfalt an möglichen Komponenten – von JSON-Tools über Code-Module bis hin zu Sub-Agenten – ist sehr mächtig, erfordert aber eine standardisierte Methode zur Zusammenarbeit und Steuerung.
 
 ### Das Model Context Protocol (MCP) als vereinheitlichende Ebene
 
 Hier setzt das **Model Context Protocol (MCP)** an. MCP ist kein spezifisches Werkzeug, sondern ein **standardisiertes Kommunikationsprotokoll**. Es definiert eine gemeinsame "Sprache" für die Interaktion zwischen einem zentralen Orchestrator und den unterschiedlichen Komponenten einer Kette.
 
-<br>
-
 Die Kernidee: Eine MCP-konforme Komponente kann intern verschiedenste Funktionalitäten umsetzen (ein JSON-Tool wrappen, Code ausführen, einen ganzen Agenten darstellen oder einen anderen spezialisierten Dienst bereitstellen), während sie nach außen über das MCP-Protokoll einheitlich angesprochen wird. Der Orchestrator sendet Anfragen und Kontext über MCP und erhält Ergebnisse zurück, unabhängig von der internen Implementierung der jeweiligen Komponente.
-
-<br>
 
 **Vorteile dieses Ansatzes durch MCP**
 
-<br>
-
 Diese Vereinheitlichung durch MCP bietet klare Vorteile:
-
-<br>
 
 * **Modularität:** Komponenten können unabhängig entwickelt und einfach ausgetauscht werden.
 * **Flexibilität:** Komplexe Systeme lassen sich aus diversen, optimal passenden Bausteinen zusammensetzen.
 * **Vereinfachte Integration:** Der Orchestrator interagiert mit allen Komponenten über eine einheitliche Schnittstelle, was die Gesamtkomplexität reduziert.
 
-<br>
-
 MCP schafft somit eine wichtige Abstraktionsebene, die den Aufbau robusterer, anpassungsfähigerer und letztlich intelligenterer LLM-basierter Anwendungen ermöglicht.
-
-<br>
 
 ## Agentic Systems
 
 Der nächste Schritt in der Entwicklung intelligenter Systeme besteht darin, aus der reichhaltigen Menge an möglichen Knoten (Tools, Agenten, MCP-Server) die richtigen für eine bestimmte Aufgabe auszuwählen und deren Interaktion und Abfolge optimal zu gestalten.
 
-<br>
-
 Betrachten wir als illustratives Beispiel die Beantwortung einer Frage, für die mehrere Suchanfragen und Verarbeitungsschritte erforderlich sind: 
-
-<br>
 
 "Wer war deutscher Bundeskanzler, als Oliver Bierhoff das Golden Goal schoss?"
 
-<br>
-
 **1. LLM (Reasoning):** "Um diese Frage zu beantworten, benötige ich zwei Informationen: Wann hat Oliver Bierhoff das Golden Goal geschossen und wer war zu diesem Zeitpunkt Bundeskanzler. Ich kann dafür ein Suchwerkzeug verwenden."
-
-<br>
 
 **2. Orchestrierungsebene (Act - Tool Call 1):**
 
@@ -372,15 +262,9 @@ Betrachten wir als illustratives Beispiel die Beantwortung einer Frage, für die
 {"tool_name": "search", "parameters": {"query": "Oliver Bierhoff Golden Goal Datum"}}
 ```
 
-<br>
-
 **3. Orchestrierungsebene (Observation 1):** Das Suchwerkzeug liefert das Ergebnis: "Oliver Bierhoff schoss das Golden Goal im Finale der Fußball-Europameisterschaft 1996 am 30. Juni 1996."
 
-<br>
-
 **4. LLM (Reason):** "Jetzt weiß ich das Datum. Nun muss ich herausfinden, wer am 30. Juni 1996 Bundeskanzler war. Ich verwende erneut das Suchwerkzeug."
-
-<br>
 
 **5. Orchestrierungsebene (Act - Tool Call 2):**
 
@@ -388,26 +272,14 @@ Betrachten wir als illustratives Beispiel die Beantwortung einer Frage, für die
 {"tool_name": "search", "parameters": {"query": "Bundeskanzler Deutschland 30. Juni 1996"}}
 ```
 
-<br>
-
 **6. Orchestrierungsebene (Observation 2):** Das Suchwerkzeug liefert das Ergebnis: "Helmut Kohl war von 1982 bis 1998 Bundeskanzler der Bundesrepublik Deutschland."
-
-<br>
 
 **7. LLM (Reason):** "Ich habe beide Informationen gefunden. Ich kann nun die finale Antwort formulieren."
 
-<br>
-
 **8. LLM (Final Answer):** "Als Oliver Bierhoff das Golden Goal schoss (am 30. Juni 1996), war Helmut Kohl Bundeskanzler der Bundesrepublik Deutschland."
-
-<br>
 
 ![Agentic system diagram](/assets/images/llm_tools_reasoning_agentic_system_5.png)
 
-<br>
-
 In komplexeren Szenarien könnte ein Agent einen detaillierten Plan erstellen, welche Tools oder andere Agenten in welcher Reihenfolge und mit welchen Parametern aufgerufen werden müssen, um das Ziel zu erreichen. Dieser Planungsprozess kann iterativ sein, wobei der Plan nicht bereits von Anfang an feststeht sondern basierend auf den Ergebnissen der einzelnen Schritte angepasst wird. Frameworks wie ReAct helfen dabei, diesen iterativen Prozess aus Reasoning und Aktionen zu strukturieren.
-
-<br>
 
 **Disclaimer**: Dieser Beitrag ist ein Gemeinschaftsprojekt von mir und der KI. Die Ideen zum Thema, die Struktur und die hoffentlich anschaulichen Beispiele stammen allesamt aus meiner eigenen kleinen Denkfabrik und lagen schon als Folien bereit. Weil mein Gehirn aber manchmal eher auf "Diashow" als auf "fließender Text" gepolt ist, hat mir eine freundliche KI dabei geholfen, das Ganze in diese Blog-Post-Form zu gießen. Ich habe dann noch hier und da den Feinschliff übernommen, damit auch alles sitzt. Teamwork makes the dream work, oder so ähnlich!
