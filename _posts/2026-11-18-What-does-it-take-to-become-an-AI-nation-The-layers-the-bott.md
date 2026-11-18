@@ -3,10 +3,6 @@ layout: post
 title: "What does it take to become an AI nation? The layers, the bottlenecks, and a view from Europe"
 date: 2026-11-18
 ---
-# What does it take to become an AI nation?
-
-*The layers, the bottlenecks, and a view from Europe.*
-
 When people ask "what does it take to make AI work?", they usually think of one company: a model, a chat window, a project. This text asks a different question: **what does it take for a country or a region to make AI work?** A single company will not build a data center or a chip factory. A state, or a continent, has to think about all of it.
 
 ## 1. The layers
