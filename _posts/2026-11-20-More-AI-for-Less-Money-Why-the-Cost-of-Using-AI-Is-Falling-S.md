@@ -2,6 +2,8 @@
 layout: post
 title: "More AI for Less Money: Why the Cost of Using AI Is Falling So Fast"
 date: 2026-11-20
+excerpt: > #
+  The cost of reaching a given level of AI performance is falling by about 13x per year. Behind this are faster and more power-efficient hardware and software that makes better use of it.
 ---
 Estimating how AI prices evolve is not easy. A simple price comparison over the years doesn't work, because quality keeps changing: a 2023 model and a 2026 model don't deliver the same thing, even though both are "an AI model". So Epoch AI asks a different question: what does it cost to reach a given level of performance? This is measured on five benchmarks (mathematics, hard sciences, games). The chart shows, for four of them, how the lowest cost per task falls over time to reach the same score of 25% or 75%. With every new model, the same performance gets cheaper.
 
@@ -82,7 +84,7 @@ For this to pay off, software has to actually use the lower-precision formats. A
 - From 2018, FP16 took hold; from 2020, BF16 joined it.
 - From 2023, FP8 appears. In 2025, the trainings shown run only in BF16 and FP8.
 
-![Adoption of numeric formats (FP32, TF32, FP16, BF16, FP8) in training, 2008–2025 (Epoch AI)](/assets/images/2026-11-20-More-AI-for-Less-Money-Why-the-Cost-of-Using-AI-Is-Falling-S/paste-20261118-143308-7e54.png)
+![Adoption of numeric formats (FP32, TF32, FP16, BF16, FP8) in training, 2008–2025 (Epoch AI)](/assets/images/2026-11-20-More-AI-for-Less-Money-Why-the-Cost-of-Using-AI-Is-Falling-S/training-precision.png)
 
 Fewer bits per number means: more operations per chip, less memory needed and less energy per operation. Hardware and software work together: new chips bring the formats, and training code uses them.
 
